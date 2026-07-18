@@ -1,0 +1,98 @@
+﻿<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<script>(function(){try{var k="man2026.theme",t=null,m=document.cookie.match(/(?:^|; )man2026\.theme=([^;]*)/);if(m){t=decodeURIComponent(m[1])}if(t!=="light"&&t!=="dark"){try{t=localStorage.getItem(k)}catch(e){}}if(t!=="light"&&t!=="dark"){try{t=sessionStorage.getItem(k)}catch(e){}}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="man2026-depth" content="0">
+<title>LEGGIMI — Manuale Restaurato INPS 2026 (by Davide Pica)</title>
+<link rel="stylesheet" href="assets/css/style.css?v=2026042810">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231e3a5f'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%23f5efe4'%3EM%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <span class="brand-logo">M</span>
+    <span class="brand-text">Manuale INPS · Pensioni &amp; Simulazioni<small>Restaurato, integrato e collazionato da Davide Pica · 2026</small></span>
+  </a>
+  <div class="topbar-spacer"></div>
+  <a class="btn btn--primary" href="index.html">Vai al manuale →</a>
+</header>
+<div class="body-wrap">
+<main class="main"><div class="content">
+<h1>LEGGIMI</h1>
+<p class="lead">Manuale Restaurato INPS 2026 (by Davide Pica) — Versione modernizzata, standalone, offline.</p>
+
+<div class="callout callout--info">
+  <div class="callout-body">
+    <strong>CARPE PC (Ca.R.Pe.)</strong> = Software per il <strong>Ca</strong>lcolo della <strong>R</strong>etribuzione media <strong>Pe</strong>nsionabile e ipotesi di rata pensione. Applicativo ufficiale INPS, distribuito esclusivamente dal portale <a href="https://www.inps.it" target="_blank" rel="noopener">www.inps.it</a> per finalità istituzionali.
+    <br><a href="index.html#crediti">Vedi informativa legale completa nella pagina Download Carpe →</a>
+  </div>
+</div>
+
+<h2>Come si usa</h2>
+<ol>
+  <li>Apri <code>index.html</code> con un qualsiasi browser moderno (Chrome, Edge, Firefox, Safari).</li>
+  <li>Naviga tramite la <strong>sidebar</strong> a sinistra o usa la <strong>ricerca</strong> in alto (scorciatoia <code>Ctrl K</code> / <code>⌘K</code>).</li>
+  <li>Clicca sulle <strong>immagini</strong> per aprirle in lightbox con zoom.</li>
+  <li>Cambia tra tema chiaro (carta antica) e tema scuro con il pulsante in alto a destra.</li>
+</ol>
+
+<h2>Contenuti</h2>
+<table>
+<thead><tr><th>Sezione</th><th>Cosa contiene</th></tr></thead>
+<tbody>
+<tr><td><strong>Software Carpe</strong></td><td>Procedura d'uso del software (menu File, Calcola, Visualizza, Cambia, Comunicazione, Aiuto), funzioni, riferimenti operativi</td></tr>
+<tr><td><strong>Norme &amp; contributi</strong></td><td>Fonti normative, contribuzione, posizione assicurativa, prestazioni, ricostituzioni, riliquidazioni, Legge 413/1984</td></tr>
+<tr><td><strong>Documentazione</strong></td><td>Qualifiche marittimi, codifiche contribuzione, sentenze, raccolta circolari INPS storiche</td></tr>
+<tr><td><strong>Manuali PDF</strong></td><td>8 manuali tecnici visualizzabili inline con PDF.js (errori Carpe, ricognizione, codice 60500, info file E1, Legge 413, ecc.)</td></tr>
+<tr><td><strong>Manuali Carpe (HTML)</strong></td><td>Manuali "Utilizzo" e "Installazione" del software, integrati nello shell con stile coerente</td></tr>
+</tbody>
+</table>
+
+<h2>Struttura della cartella</h2>
+<table>
+<thead><tr><th>Percorso</th><th>Cosa contiene</th></tr></thead>
+<tbody>
+<tr><td><code>index.html</code></td><td>Pagina principale di ingresso</td></tr>
+<tr><td><code>assets/css/</code></td><td>Foglio di stile (palette carta antica, tema chiaro/scuro, responsive)</td></tr>
+<tr><td><code>assets/js/</code></td><td>JavaScript: app.js, lightbox.js?v=2026042739, pdf-viewer.js, search-index.js</td></tr>
+<tr><td><code>assets/images/</code></td><td>Tutte le 384 immagini del manuale originale</td></tr>
+<tr><td><code>assets/vendor/pdfjs/</code></td><td>Libreria PDF.js (offline)</td></tr>
+<tr><td><code>pages/norme/</code></td><td>Sezione "Le Norme"</td></tr>
+<tr><td><code>pages/procedura/</code></td><td>Sezione "La Procedura" (software Carpe)</td></tr>
+<tr><td><code>pages/documentazione/</code></td><td>Documentazione, manuali PDF e archivi HTML</td></tr>
+<tr><td><code>pages/circolari/</code></td><td>35 circolari INPS sulla previdenza marinara</td></tr>
+<tr><td><code>pdf/</code></td><td>I PDF originali</td></tr>
+<tr><td><code>mht/</code></td><td>Archivi MHT estratti (immagini risorse)</td></tr>
+<tr><td><code>LICENSE</code> · <code>NOTICE.md</code> · <code>DISCLAIMER.md</code></td><td>Licenza (MIT sul codice), attribuzione contenuti INPS e avviso legale</td></tr>
+</tbody>
+</table>
+
+<div class="callout callout--success">
+  <div class="callout-body">
+    <strong>Cartella completamente autonoma.</strong> Tutti i collegamenti tra pagine, CSS, JS e immagini sono <em>relativi</em>. Puoi spostare, copiare, comprimere e condividere la cartella <code>Manuale Restaurato INPS 2026/</code> ovunque (USB, NAS, server interno): funzionerà sempre senza bisogno di internet.
+  </div>
+</div>
+
+<h2>Crediti</h2>
+<div class="credits-card">
+  <div class="credits-grid">
+    <div class="credits-block">
+      <div class="credits-label">Manuale originale</div>
+      <div class="credits-value">R. Codeglia · R.A. Milocani</div>
+      <div class="credits-meta">INPS — Versione maggio 2005</div>
+    </div>
+    <div class="credits-block">
+      <div class="credits-label">Riadattamento 2026</div>
+      <div class="credits-value">Davide Pica</div>
+      <div class="credits-meta">Aprile 2026</div>
+    </div>
+    <div class="credits-block">
+      <div class="credits-label">Scopo</div>
+      <div class="credits-value">Manuale tecnico-operativo per Carpe e previdenza marittima/elettrici</div>
+    </div>
+  </div>
+</body>
+</html>

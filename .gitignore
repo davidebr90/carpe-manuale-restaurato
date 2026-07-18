@@ -1,0 +1,19 @@
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Build / cache (non pubblicati)
+_build/
+__pycache__/
+*.pyc
+
+# File proprietari da NON versionare (software INPS)
+*.exe
+extras/

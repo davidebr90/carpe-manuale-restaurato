@@ -1,0 +1,257 @@
+﻿<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<script>(function(){try{var k="man2026.theme",t=null,m=document.cookie.match(/(?:^|; )man2026\.theme=([^;]*)/);if(m){t=decodeURIComponent(m[1])}if(t!=="light"&&t!=="dark"){try{t=localStorage.getItem(k)}catch(e){}}if(t!=="light"&&t!=="dark"){try{t=sessionStorage.getItem(k)}catch(e){}}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1e3a5f">
+<meta name="man2026-depth" content="1">
+<title>Guida utilizzo file E1 — Manuale Restaurato INPS 2026 (by Davide Pica)</title>
+<meta name="description" content="Come importare il file .E1 in Ca.R.Pe., struttura interna, decodifica e aspetti legali — Manuale Restaurato INPS 2026.">
+<link rel="stylesheet" href="../assets/css/style.css?v=2026042810">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231e3a5f'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%23f5efe4'%3EM%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<div class="app">
+  <header class="topbar" role="banner"><button id="menu-btn" class="icon-btn" aria-label="Apri/chiudi menu di navigazione"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button><a class="brand" href="../index.html"><span class="brand-logo" aria-hidden="true">M</span><span class="brand-text">Manuale INPS · Pensioni &amp; Simulazioni<small>Restaurato, integrato e collazionato da Davide Pica · 2026</small></span></a><div class="topbar-spacer"></div><div class="search-wrap"><span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><input id="search-input" class="search-input" type="search" autocomplete="off" placeholder="Cerca nel manuale…" aria-label="Cerca nel manuale"><span class="search-shortcut" aria-hidden="true">Ctrl K</span><div id="search-results" class="search-results" role="listbox"></div></div><button id="theme-toggle" class="icon-btn" aria-label="Cambia tema chiaro/scuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></header>
+  <div class="body-wrap">
+    <div class="sidebar-backdrop"></div>
+    <aside class="sidebar" aria-label="Navigazione manuale">
+<div class="sidebar-macro" data-macro="home"><a class="sidebar-macro-header sidebar-macro-header--link" href="../index.html"><span class="sidebar-macro-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22 L24 8 L40 22 L40 40 L8 40 Z" fill="#f5efe4" stroke="#5a3a18" stroke-width="2"/><path d="M6 23 L24 7 L42 23" stroke="#b8541e" stroke-width="2.4" fill="none"/><path d="M16 32 L20 32 L20 40 L16 40 Z" fill="#5a3a18" stroke="#5a3a18"/><rect x="26" y="26" width="6" height="6" fill="#7eaadc" stroke="#5a3a18" stroke-width="1.4"/><rect x="14" y="20" width="5" height="5" fill="#7eaadc" stroke="#5a3a18" stroke-width="1.2"/><path d="M30 12 L30 18 L34 18" stroke="#5a3a18" stroke-width="1.4" fill="none"/></svg></span><span class="sidebar-macro-title">Home — Manuale 2026</span><span class="sidebar-macro-sub">Indice generale</span></a></div>
+
+<div class="sidebar-macro" data-macro="carpe">
+<div class="sidebar-macro-header"><span class="sidebar-macro-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12"/><path d="M6 22h12"/><path d="M7 2v5a5 5 0 0 0 10 0V2"/><path d="M7 22v-5a5 5 0 0 1 10 0v5"/></svg></span><span class="sidebar-macro-title">Ca.r.Pe. — Aggiornamento 2026</span><span class="sidebar-macro-sub">Cassa Pensioni · Software INPS · Toolkit 2026</span></div>
+<div class="sidebar-section sidebar-section--sub" data-section="carpe-download">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>Download<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/download-carpe.html">Download Carpe</a></li>
+
+<li class="nav-item"><a class="nav-link" href="../pages/guida-scarica-e1.html">Download File E1</a></li>
+</ul></div>
+<div class="sidebar-section sidebar-section--sub" data-section="carpe-guide">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>Guide Pratiche<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/guida-simulazione-pensione.html">Guida: simulazione pensione</a></li>
+
+
+<li class="nav-item"><a class="nav-link" href="../pages/guida-utilizzo-e1.html">Guida utilizzo file E1</a></li>
+</ul></div>
+<div class="sidebar-section sidebar-section--sub" data-section="carpe-tools">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>Strumenti Web<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/codifica-decodifica-e1.html">Codifica / Decodifica / Modifica .E1 .EC .AG .XML</a></li>
+</ul></div>
+<div class="sidebar-section sidebar-section--sub" data-section="carpe-manuali">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>Manuali Ufficiali<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/manuale-carpe.html">Manuale Carpe — Errori</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/info-uso.html">Info uso file E1</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/man-carpe-utilizzo.html">Manuale Carpe — Utilizzo</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/man-carpe-installazione.html">Manuale Carpe — Installazione</a></li>
+</ul></div>
+</div>
+<div class="sidebar-macro" data-macro="gdm">
+<div class="sidebar-macro-header"><span class="sidebar-macro-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><span class="sidebar-macro-title">GdM — Gente di Mare</span><span class="sidebar-macro-sub">Gestione Marittimi · Previdenza Marinara</span></div>
+<div class="sidebar-section sidebar-section--sub" data-section="gdm-norme">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>Le Norme<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/norme/index.html">Panoramica</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/ama1.html">Le Fonti normative</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/ama2.html">La Contribuzione</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/ama3.html">La Posizione assicurativa</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/ama4.html">Le Prestazioni</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/ama5.html">Ricostituzioni e Riliquidazioni</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/ama6.html">Quesiti alla Direzione</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/al413.html">Legge 413/1984 — testo</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/aleg413.html">Legge 413/1984 — articoli</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/alind.html">Legge — indice</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/aschem.html">Schema compatibilità classe-qualifica</a></li>
+</ul></div>
+<div class="sidebar-section sidebar-section--sub" data-section="gdm-procedura">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></span>La Procedura<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/index.html">Panoramica</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenu.html">Barra dei menu</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenufii.html">Menu File</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenucai.html">Menu Calcola</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenuvi.html">Menu Visualizza</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenuvip.html">Menu Visualizza — dettagli</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenuca.html">Menu Cambia</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenucoi.html">Menu Comunicazione</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenuaiu.html">Menu ?  (Aiuto)</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenufa.html">Funzioni A</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenufad.html">Funzioni A — dettagli</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenufr.html">Funzioni R</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/agne1.html">Note esplicative</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/agdmia.html">Informazioni Aiuto</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/agdmisst.html">Stato del sistema</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/msgtab.html">Tabella messaggi</a></li>
+</ul></div>
+<div class="sidebar-section sidebar-section--sub" data-section="gdm-documentazione">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span>Documentazione GdM<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/index.html">Panoramica</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/qualifiche.html">Qualifiche marittimi</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/codifiche.html">Codifica contribuzione marittima</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/limite-max-ml.html">Limite massimo ML</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/sentenze.html">Sentenze sul calcolo pensioni</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/indice-circolari-orig.html">Indice circolari (originale)</a></li>
+</ul></div>
+<div class="sidebar-section sidebar-section--sub" data-section="gdm-circolari">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 13l-7.5 7.5a2.121 2.121 0 1 1-3-3L11 10"/><path d="M16 16l4-4"/><path d="M12 12l4-4"/><path d="M22 6l-6-6"/></svg></span>Raccolta Circolari<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/circolari/index.html">Panoramica</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/circolari/index.html">Raccolta circolari</a></li>
+</ul></div>
+<div class="sidebar-section sidebar-section--sub" data-section="gdm-pdf">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>Manuali PDF GdM<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/manuale-gdm-60500.html"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>Manuale Carpe GdM 60500</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/manuale-rico.html"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>Manuale Ricognizione</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/gdm-guida.html"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>GdM — Guida operativa</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/gdm-norme.html"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>GdM — Raccolta norme</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/gdm-analisi.html"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>GdM — Analisi tecniche</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/gdm-l413.html"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>GdM — Legge 413/1984</a></li>
+</ul></div>
+</div>
+</aside>
+    <main class="main" id="main">
+      <div class="content">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><span>Software Carpe</span><span class="breadcrumb-sep">/</span><span class="breadcrumb-current">Guida utilizzo file E1</span></nav>
+        <h1>Guida utilizzo file E1</h1>
+        <p class="lead">Come importare il file <code>.E1</code> in Ca.R.Pe., struttura interna del file, decodifica, ispezione, e aspetti legali. Tutto quello che succede dopo aver scaricato il tuo estratto contributivo dall'INPS.</p>
+        <div class="callout callout--info">
+  <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span>
+  <div class="callout-body">
+    <strong>Hai bisogno di scaricarlo prima?</strong> Vai alla <a href="guida-scarica-e1.html"><strong>Guida: scaricare il file E1</strong></a> per il download dal Fascicolo Previdenziale INPS.
+  </div>
+</div>
+
+<h2 id="importare">Importare il file E1 in Ca.R.Pe.</h2>
+
+<ol>
+  <li>Apri Ca.R.Pe. PC sul tuo computer.</li>
+  <li>Dal menu <strong>File → Importa…</strong> (o <strong>Apri…</strong> a seconda della versione) scegli il file <code>.E1</code> appena scaricato.</li>
+  <li>Il software importa automaticamente tutti i periodi contributivi, l'anagrafica e le retribuzioni note. Vedrai apparire i pannelli <em>Anagrafica</em>, <em>Anzianità</em>, <em>Retribuzioni</em> già popolati.</li>
+  <li>A questo punto puoi calcolare la pensione (Menu Calcola), simulare scenari futuri (vedi <a href="guida-simulazione-pensione.html">Guida: simulazione pensione</a>) o salvare il risultato come file <code>.EC</code>.</li>
+</ol>
+
+<p>Per il dettaglio operativo dell'import e dei pannelli vedi anche il manuale <a href="documentazione/info-uso.html">«Informazioni uso file E1 su Carpe»</a> (PDF).</p>
+
+<hr>
+
+<h2 id="formato-e1">Struttura del file <code>.E1</code> (input)</h2>
+
+<p>Il file <code>.E1</code> è un <strong>contenitore binario codificato</strong>: non è testo leggibile e viene interpretato dal software Ca.R.Pe. PC durante l'import. Le caratteristiche osservabili:</p>
+
+<table>
+  <thead>
+    <tr><th>Caratteristica</th><th>Valore</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Estensione</td><td><code>.e1</code> (minuscola)</td></tr>
+    <tr><td>Tipo</td><td>Binario codificato (non testo)</td></tr>
+    <tr><td>Naming convention tipico</td><td><code>EC-CODICEFISCALE16.e1</code></td></tr>
+    <tr><td>Dimensione tipica</td><td>50–500 KB</td></tr>
+    <tr><td>Leggibilità diretta</td><td>Nessuna — non apribile in un editor di testo</td></tr>
+    <tr><td>Compatibilità</td><td>Software Ca.R.Pe. PC INPS</td></tr>
+  </tbody>
+</table>
+
+<div class="callout">
+  <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span>
+  <div class="callout-body">
+    <strong>Perché è codificato.</strong> Il formato non in chiaro serve a ridurre il rischio di alterazione dei dati prima dell'import e a mantenere la lettura all'interno del canale ufficiale. Il file è pensato per essere aperto da Ca.R.Pe. PC, che ne verifica la coerenza durante l'import.
+  </div>
+</div>
+
+<h3 id="strumento-e1">Consultare il contenuto del proprio file E1/EC</h3>
+
+<p>Questo manuale include uno strumento che gira <strong>interamente nel browser</strong> (nessun dato lascia il tuo dispositivo) per convertire il file <code>.E1</code>/<code>.EC</code> nel corrispondente XML leggibile e viceversa, così da consultare la propria posizione e impostare simulazioni personali: <a href="codifica-decodifica-e1.html"><strong>Codifica / Decodifica / Modifica .E1 .EC .AG .XML</strong></a>.</p>
+
+<div class="callout callout--info">
+  <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span>
+  <div class="callout-body">
+    <strong>A cosa serve.</strong> Convertito in XML, il file mostra le stesse informazioni che Ca.R.Pe. presenta a video: anagrafica, periodi contributivi, retribuzioni, datori di lavoro. È utile per rileggere con calma la propria storia contributiva e per preparare ipotesi &laquo;what-if&raquo; da ricaricare in Ca.R.Pe. sul proprio PC.
+  </div>
+</div>
+
+<hr>
+
+<h2 id="capire-contenuto">Come leggere i dati del proprio estratto</h2>
+
+<p>Il modo più semplice e diretto è farsi dare da Ca.R.Pe. stesso una copia leggibile, senza strumenti aggiuntivi.</p>
+
+<div class="callout callout--success">
+  <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+  <div class="callout-body">
+    <strong>Salva il file <code>.EC</code> da Ca.R.Pe.</strong> È leggibile ed è sufficiente per la quasi totalità dei casi.
+    <br>Procedura: dopo aver caricato l'E1 in Ca.R.Pe., usa <strong>&laquo;Salva EC&raquo;</strong> (oppure menu <em>File → Salva con nome… → tipo: Estratto Conto .EC</em>). Apri il file con un editor di testo: vedrai la tua storia contributiva in chiaro.
+  </div>
+</div>
+
+<p>In alternativa puoi convertire il file con lo <a href="codifica-decodifica-e1.html">strumento in-browser</a> di questo manuale, che produce lo stesso contenuto in formato XML.</p>
+
+<h3 id="uso-personale">Ambito d'uso</h3>
+
+<p>Lo strumento e le informazioni di questa pagina sono pensati per la <strong>consultazione e la simulazione sui propri dati</strong>. In sintesi:</p>
+
+<p><strong>Usi appropriati</strong> (uso personale):</p>
+<ul>
+  <li>Convertire il <em>proprio</em> file E1/EC in XML per leggerlo e archiviarlo.</li>
+  <li>Impostare simulazioni &laquo;what-if&raquo; sulla propria posizione (es. proiezioni con periodi futuri ipotetici) da ricaricare in Ca.R.Pe. sul proprio PC.</li>
+  <li>Salvare la copia <code>.EC</code> in chiaro che Ca.R.Pe. stesso offre via <em>&laquo;Salva con nome → Estratto Conto .EC&raquo;</em>.</li>
+  <li>Rivolgersi all'INPS per la rettifica di eventuali dati errati: è il canale ufficiale per qualsiasi variazione formale della posizione.</li>
+</ul>
+
+<p><strong>Da evitare</strong>:</p>
+<ul>
+  <li>Utilizzare un file modificato come se fosse il documento originale rilasciato dall'INPS, o presentarlo come autentico a enti, patronati, datori di lavoro o terzi. Le modifiche hanno valore solo come simulazione personale.</li>
+  <li>Operare su file E1/EC di altre persone senza il loro consenso: l'estratto contributivo è un dato personale ai sensi del GDPR.</li>
+  <li>Fare un uso commerciale dei contenuti o del software INPS (vedi <a href="download-carpe.html#informativa">informativa di distribuzione INPS</a>).</li>
+</ul>
+
+<p>Per qualsiasi variazione con effetto ufficiale sulla propria posizione contributiva fa fede esclusivamente l'INPS.</p>
+
+<hr>
+
+<h2 id="riferimenti-utilizzo">Riferimenti</h2>
+
+<ul>
+  <li><a href="guida-scarica-e1.html"><strong>Guida: scaricare il file E1</strong></a> — la procedura ufficiale per ottenere il file dall'INPS.</li>
+  <li><a href="codifica-decodifica-e1.html"><strong>Codifica / Decodifica / Modifica .E1 .EC .AG .XML</strong></a> — strumento in-browser per convertire il file E1/EC in XML e viceversa.</li>
+  <li><a href="documentazione/info-uso.html"><strong>Informazioni uso file E1 su Carpe</strong></a> — manuale PDF ufficiale INPS sul formato e l'uso del file E1.</li>
+  <li><a href="documentazione/man-carpe-utilizzo.html"><strong>Manuale Carpe — Utilizzo</strong></a> — sezione import dell'estratto contributivo.</li>
+  <li><a href="documentazione/manuale-carpe.html"><strong>Manuale Carpe — Errori</strong></a> — diagnosi e soluzione errori in fase di import/calcolo.</li>
+  <li><a href="guida-simulazione-pensione.html"><strong>Guida: simulazione pensione</strong></a> — come usare i dati importati per proiettare la rata futura.</li>
+</ul>
+
+<div class="callout callout--warn">
+  <span class="callout-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+  <div class="callout-body">
+    <strong>Avviso.</strong> Le informazioni su struttura interna dei file <code>.E1</code> e <code>.EC</code> riportate qui hanno finalità puramente <em>documentativa e informativa</em> e <strong>non hanno valore ufficiale</strong>: non sostituiscono la documentazione INPS. Per la specifica formale del formato fa fede esclusivamente l'INPS e il manuale ufficiale &laquo;Informazioni uso file E1 su Carpe&raquo;.
+  </div>
+</div>
+
+      </div>
+      <footer class="site-footer">
+        <div class="footer-row">
+          <strong>Manuale Restaurato INPS 2026 (by Davide Pica)</strong> — Manuale tecnico-operativo per il software Carpe e la previdenza marittima/elettrici ed AGO.
+        </div>
+        <div class="footer-row footer-credits">
+          Manuale originale (mag. 2005): R. Codeglia, R.A. Milocani.
+          <br>Riadattamento ad uso personale, aprile 2026: <strong>Davide Pica</strong>
+        </div>
+        <div class="footer-row footer-legal">
+          <strong>AVVISO LEGALE.</strong> Tutte le informazioni riportate in questo manuale <strong>vanno verificate presso INPS</strong> e <strong>NON hanno valore legale</strong>, essendo state prodotte ed elaborate <em>in via informale e non ufficiale da Davide Pica nel 2026</em>. Fa fede in ogni caso la documentazione ufficiale pubblicata da INPS e l'attuale quadro normativo.
+        </div>
+      </footer>
+    </main>
+  </div>
+</div>
+<button id="to-top" class="to-top" aria-label="Torna all'inizio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<script src="../assets/js/search-index.js"></script>
+<script src="../assets/js/app.js?v=2026042810"></script>
+<script src="../assets/js/lightbox.js?v=2026042739"></script>
+</body>
+</html>

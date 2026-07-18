@@ -1,0 +1,1155 @@
+﻿<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<script>(function(){try{var k="man2026.theme",t=null,m=document.cookie.match(/(?:^|; )man2026\.theme=([^;]*)/);if(m){t=decodeURIComponent(m[1])}if(t!=="light"&&t!=="dark"){try{t=localStorage.getItem(k)}catch(e){}}if(t!=="light"&&t!=="dark"){try{t=sessionStorage.getItem(k)}catch(e){}}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1e3a5f">
+<meta name="man2026-depth" content="1">
+<title>Codifica / Decodifica / Modifica dei file .E1, .EC, .AG ed .XML — Manuale Restaurato INPS 2026 (by Davide Pica)</title>
+<meta name="description" content="Manuale Restaurato INPS 2026 (by Davide Pica) — Manuale INPS Carpe e Previdenza: Prompt per agente AI: debug del tuo file E1">
+<link rel="stylesheet" href="../assets/css/style.css?v=2026042810">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231e3a5f'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui' font-weight='800' font-size='18' fill='%23f5efe4'%3EM%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<div class="app">
+  <header class="topbar" role="banner"><button id="menu-btn" class="icon-btn" aria-label="Apri/chiudi menu di navigazione"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button><a class="brand" href="../index.html"><span class="brand-logo" aria-hidden="true">M</span><span class="brand-text">Manuale INPS · Pensioni &amp; Simulazioni<small>Restaurato, integrato e collazionato da Davide Pica · 2026</small></span></a><div class="topbar-spacer"></div><div class="search-wrap"><span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><input id="search-input" class="search-input" type="search" autocomplete="off" placeholder="Cerca nel manuale…" aria-label="Cerca nel manuale"><span class="search-shortcut" aria-hidden="true">Ctrl K</span><div id="search-results" class="search-results" role="listbox"></div></div><button id="theme-toggle" class="icon-btn" aria-label="Cambia tema chiaro/scuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></header>
+  <div class="body-wrap">
+    <div class="sidebar-backdrop"></div>
+    <aside class="sidebar" aria-label="Navigazione manuale">
+<div class="sidebar-macro" data-macro="home"><a class="sidebar-macro-header sidebar-macro-header--link" href="../index.html"><span class="sidebar-macro-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22 L24 8 L40 22 L40 40 L8 40 Z" fill="#f5efe4" stroke="#5a3a18" stroke-width="2"/><path d="M6 23 L24 7 L42 23" stroke="#b8541e" stroke-width="2.4" fill="none"/><path d="M16 32 L20 32 L20 40 L16 40 Z" fill="#5a3a18" stroke="#5a3a18"/><rect x="26" y="26" width="6" height="6" fill="#7eaadc" stroke="#5a3a18" stroke-width="1.4"/><rect x="14" y="20" width="5" height="5" fill="#7eaadc" stroke="#5a3a18" stroke-width="1.2"/><path d="M30 12 L30 18 L34 18" stroke="#5a3a18" stroke-width="1.4" fill="none"/></svg></span><span class="sidebar-macro-title">Home — Manuale 2026</span><span class="sidebar-macro-sub">Indice generale</span></a></div>
+
+<div class="sidebar-macro" data-macro="carpe">
+<div class="sidebar-macro-header"><span class="sidebar-macro-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12"/><path d="M6 22h12"/><path d="M7 2v5a5 5 0 0 0 10 0V2"/><path d="M7 22v-5a5 5 0 0 1 10 0v5"/></svg></span><span class="sidebar-macro-title">Ca.r.Pe. — Aggiornamento 2026</span><span class="sidebar-macro-sub">Cassa Pensioni · Software INPS · Toolkit 2026</span></div>
+<div class="sidebar-section sidebar-section--sub" data-section="carpe-download">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>Download<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/download-carpe.html">Download Carpe</a></li>
+
+<li class="nav-item"><a class="nav-link" href="../pages/guida-scarica-e1.html">Download File E1</a></li>
+</ul></div>
+<div class="sidebar-section sidebar-section--sub" data-section="carpe-guide">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>Guide Pratiche<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/guida-simulazione-pensione.html">Guida: simulazione pensione</a></li>
+
+
+<li class="nav-item"><a class="nav-link" href="../pages/guida-utilizzo-e1.html">Guida utilizzo file E1</a></li>
+</ul></div>
+<div class="sidebar-section sidebar-section--sub" data-section="carpe-tools">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>Strumenti Web<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/codifica-decodifica-e1.html">Codifica / Decodifica / Modifica .E1 .EC .AG .XML</a></li>
+</ul></div>
+<div class="sidebar-section sidebar-section--sub" data-section="carpe-manuali">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>Manuali Ufficiali<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/manuale-carpe.html">Manuale Carpe — Errori</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/info-uso.html">Info uso file E1</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/man-carpe-utilizzo.html">Manuale Carpe — Utilizzo</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/man-carpe-installazione.html">Manuale Carpe — Installazione</a></li>
+</ul></div>
+</div>
+<div class="sidebar-macro" data-macro="gdm">
+<div class="sidebar-macro-header"><span class="sidebar-macro-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><span class="sidebar-macro-title">GdM — Gente di Mare</span><span class="sidebar-macro-sub">Gestione Marittimi · Previdenza Marinara</span></div>
+<div class="sidebar-section sidebar-section--sub" data-section="gdm-norme">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>Le Norme<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/norme/index.html">Panoramica</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/ama1.html">Le Fonti normative</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/ama2.html">La Contribuzione</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/ama3.html">La Posizione assicurativa</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/ama4.html">Le Prestazioni</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/ama5.html">Ricostituzioni e Riliquidazioni</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/ama6.html">Quesiti alla Direzione</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/al413.html">Legge 413/1984 — testo</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/aleg413.html">Legge 413/1984 — articoli</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/alind.html">Legge — indice</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/norme/aschem.html">Schema compatibilità classe-qualifica</a></li>
+</ul></div>
+<div class="sidebar-section sidebar-section--sub" data-section="gdm-procedura">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></span>La Procedura<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/index.html">Panoramica</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenu.html">Barra dei menu</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenufii.html">Menu File</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenucai.html">Menu Calcola</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenuvi.html">Menu Visualizza</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenuvip.html">Menu Visualizza — dettagli</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenuca.html">Menu Cambia</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenucoi.html">Menu Comunicazione</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenuaiu.html">Menu ?  (Aiuto)</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenufa.html">Funzioni A</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenufad.html">Funzioni A — dettagli</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/amenufr.html">Funzioni R</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/agne1.html">Note esplicative</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/agdmia.html">Informazioni Aiuto</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/agdmisst.html">Stato del sistema</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/procedura/msgtab.html">Tabella messaggi</a></li>
+</ul></div>
+<div class="sidebar-section sidebar-section--sub" data-section="gdm-documentazione">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span>Documentazione GdM<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/index.html">Panoramica</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/qualifiche.html">Qualifiche marittimi</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/codifiche.html">Codifica contribuzione marittima</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/limite-max-ml.html">Limite massimo ML</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/sentenze.html">Sentenze sul calcolo pensioni</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/indice-circolari-orig.html">Indice circolari (originale)</a></li>
+</ul></div>
+<div class="sidebar-section sidebar-section--sub" data-section="gdm-circolari">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 13l-7.5 7.5a2.121 2.121 0 1 1-3-3L11 10"/><path d="M16 16l4-4"/><path d="M12 12l4-4"/><path d="M22 6l-6-6"/></svg></span>Raccolta Circolari<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/circolari/index.html">Panoramica</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/circolari/index.html">Raccolta circolari</a></li>
+</ul></div>
+<div class="sidebar-section sidebar-section--sub" data-section="gdm-pdf">
+<button class="sidebar-section-header" type="button" aria-expanded="true"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>Manuali PDF GdM<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+<ul class="nav-list">
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/manuale-gdm-60500.html"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>Manuale Carpe GdM 60500</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/manuale-rico.html"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>Manuale Ricognizione</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/gdm-guida.html"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>GdM — Guida operativa</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/gdm-norme.html"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>GdM — Raccolta norme</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/gdm-analisi.html"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>GdM — Analisi tecniche</a></li>
+<li class="nav-item"><a class="nav-link" href="../pages/documentazione/gdm-l413.html"><span class="nav-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>GdM — Legge 413/1984</a></li>
+</ul></div>
+</div>
+</aside>
+    <main class="main" id="main">
+      <div class="content">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><span>Software Carpe</span><span class="breadcrumb-sep">/</span><span class="breadcrumb-current">Codifica / Decodifica / Modifica .E1 .EC .AG .XML</span></nav>
+      <h1>Codifica / Decodifica / Modifica dei file .E1, .EC, .AG ed .XML</h1>
+      <p class="lead">Strumento interattivo per decodificare un file .E1 di Carpe in XML, modificarlo e riencoderlo. Tutto offline, tutto nel browser. Algoritmo dedotto dall'analisi di Sub-Est.dll → E1READ.</p>
+      <div class="callout callout--success">
+  <span class="callout-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+  <div class="callout-body">
+    <strong>Algoritmo confermato.</strong> Il file <code>.E1</code> di Carpe è cifrato con una semplice <strong>sottrazione modulo 256</strong> usando una chiave ASCII di <strong>40 byte</strong> ciclica. Niente AES, niente compressione, niente <em>Crypto API</em>. La chiave è hardcoded nell'esportazione <code>E1READ</code> di <code>Sub-Est.dll</code> e qui sotto trovi un decoder/encoder funzionante che gira interamente nel tuo browser.
+  </div>
+</div>
+
+<style>
+/* ============================================================
+   E1 TOOL — CSS scoped, autosufficiente, indipendente dal CSS globale
+   ============================================================ */
+#e1-tool { font-family: var(--font-sans, system-ui, sans-serif); }
+#e1-tool * { box-sizing: border-box; }
+#e1-tool svg { display: inline-block; vertical-align: middle; flex-shrink: 0; }
+
+/* ----- Sezione UPLOAD ----- */
+#e1-tool .e1-upload-section {
+  margin: 24px 0;
+  padding: 24px;
+  background: var(--c-bg-elev, #faf5e9);
+  border: 2px solid var(--c-brand, #1e3a5f);
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(30,58,95,.10);
+}
+#e1-tool .e1-upload-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: var(--c-brand, #1e3a5f);
+}
+[data-theme="dark"] #e1-tool .e1-upload-title { color: var(--c-brand-2, #7eaadc); }
+#e1-tool .e1-upload-sub {
+  margin: 0 0 18px;
+  font-size: 14px;
+  color: var(--c-fg-2, #4a3f2e);
+  line-height: 1.55;
+}
+#e1-tool .e1-upload-sub strong { color: var(--c-accent, #b8541e); }
+
+#e1-tool .e1-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 36px 24px;
+  border: 3px dashed var(--c-border-2, #b8a98a);
+  border-radius: 10px;
+  background: var(--c-bg, #f5efe4);
+  text-align: center;
+  cursor: pointer;
+  transition: all 200ms ease;
+  min-height: 180px;
+}
+#e1-tool .e1-dropzone:hover,
+#e1-tool .e1-dropzone:focus-visible {
+  border-color: var(--c-brand, #1e3a5f);
+  background: var(--c-bg-2, #ede5d4);
+  outline: none;
+}
+#e1-tool .e1-dropzone.is-dragover {
+  border-color: var(--c-accent, #b8541e);
+  background: var(--c-bg-3, #e2d8c2);
+  transform: scale(1.005);
+}
+#e1-tool .e1-drop-icon {
+  width: 56px;
+  height: 56px;
+  color: var(--c-brand, #1e3a5f);
+  opacity: .8;
+}
+#e1-tool .e1-drop-text {
+  font-size: 16px;
+  color: var(--c-fg, #2c2418);
+  line-height: 1.5;
+}
+#e1-tool .e1-drop-text strong { display: block; font-size: 17px; margin-bottom: 4px; color: var(--c-fg, #2c2418); }
+#e1-tool .e1-drop-text small { color: var(--c-fg-3, #6b5d47); font-size: 12.5px; }
+#e1-tool .e1-drop-formats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+#e1-tool .e1-drop-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: var(--c-bg-elev, #faf5e9);
+  border: 1px solid var(--c-border, #d4c8ad);
+  border-radius: 100px;
+  font-size: 12px;
+  color: var(--c-fg-2, #4a3f2e);
+  font-family: var(--font-mono, monospace);
+}
+#e1-tool .e1-drop-chip strong { color: var(--c-brand, #1e3a5f); font-weight: 700; }
+#e1-tool .e1-pick-button {
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--c-brand, #1e3a5f);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 200ms ease;
+}
+#e1-tool .e1-pick-button:hover { background: var(--c-brand-2, #2a5285); }
+[data-theme="dark"] #e1-tool .e1-pick-button { color: #0b1018; }
+
+/* ----- Status box ----- */
+#e1-tool .e1-status {
+  margin: 14px 0;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  background: var(--c-bg-2, #ede5d4);
+  border-left: 4px solid var(--c-fg-3, #6b5d47);
+  color: var(--c-fg, #2c2418);
+  line-height: 1.5;
+}
+#e1-tool .e1-status.is-ok    { border-left-color: var(--c-success, #4a7c2a); background: rgba(74,124,42,.10); }
+#e1-tool .e1-status.is-error { border-left-color: var(--c-danger, #9c3030);  background: rgba(156,48,48,.10); }
+#e1-tool .e1-status.is-info  { border-left-color: var(--c-brand, #1e3a5f);   background: rgba(30,58,95,.10); }
+#e1-tool .e1-file-meta {
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  color: var(--c-fg-3, #6b5d47);
+  padding: 0 4px;
+}
+
+/* ----- Editor + Toolbar ----- */
+#e1-tool .e1-editor-wrap {
+  margin: 18px 0;
+  border: 1px solid var(--c-border-2, #b8a98a);
+  border-radius: 10px;
+  background: var(--c-bg-elev, #faf5e9);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(74,63,46,.08);
+}
+#e1-tool .e1-editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 14px;
+  background: var(--c-bg-2, #ede5d4);
+  border-bottom: 1px solid var(--c-border, #d4c8ad);
+}
+#e1-tool .e1-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1.5px solid var(--c-border-2, #b8a98a);
+  border-radius: 6px;
+  background: var(--c-bg-elev, #faf5e9);
+  color: var(--c-fg, #2c2418);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+  white-space: nowrap;
+}
+#e1-tool .e1-btn:hover { background: var(--c-bg-3, #e2d8c2); border-color: var(--c-fg-3, #6b5d47); }
+#e1-tool .e1-btn--primary {
+  background: var(--c-brand, #1e3a5f);
+  color: #fff;
+  border-color: var(--c-brand, #1e3a5f);
+}
+#e1-tool .e1-btn--primary:hover {
+  background: var(--c-brand-2, #2a5285);
+  border-color: var(--c-brand-2, #2a5285);
+  color: #fff;
+}
+[data-theme="dark"] #e1-tool .e1-btn--primary { color: #0b1018; }
+#e1-tool .e1-btn--accent {
+  background: var(--c-accent, #b8541e);
+  color: #fff;
+  border-color: var(--c-accent, #b8541e);
+}
+#e1-tool .e1-btn--accent:hover {
+  background: #cc5e2a;
+  border-color: #cc5e2a;
+  color: #fff;
+}
+#e1-tool .e1-btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--c-fg-2, #4a3f2e);
+}
+#e1-tool .e1-btn--ghost:hover { background: var(--c-bg-2, #ede5d4); border-color: var(--c-border, #d4c8ad); }
+#e1-tool .e1-btn:disabled { opacity: .4; cursor: not-allowed; }
+#e1-tool .e1-btn:active { transform: translateY(1px); box-shadow: inset 0 1px 3px rgba(0,0,0,.18); }
+#e1-tool .e1-btn.is-pressed {
+  animation: e1-press 320ms ease-out;
+  background: var(--c-success, #4a7c2a) !important;
+  color: #fff !important;
+  border-color: var(--c-success, #4a7c2a) !important;
+}
+@keyframes e1-press {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(.93); box-shadow: 0 0 0 6px rgba(74,124,42,.35); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(74,124,42,0); }
+}
+#e1-tool .e1-btn--sm { padding: 5px 10px; font-size: 11.5px; }
+#e1-tool .e1-btn svg { width: 14px; height: 14px; }
+
+/* ----- Find / Replace panel ----- */
+#e1-tool .e1-find-panel {
+  background: var(--c-bg-2, #ede5d4);
+  border-bottom: 1px solid var(--c-border, #d4c8ad);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#e1-tool .e1-find-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+#e1-tool .e1-find-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--c-fg-3, #6b5d47);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  width: 60px;
+  flex-shrink: 0;
+}
+#e1-tool .e1-find-input {
+  flex: 1;
+  min-width: 140px;
+  padding: 6px 10px;
+  border: 1.5px solid var(--c-border, #d4c8ad);
+  border-radius: 6px;
+  background: var(--c-bg-elev, #faf5e9);
+  color: var(--c-fg, #2c2418);
+  font: inherit;
+  font-family: var(--font-mono, monospace);
+  font-size: 12.5px;
+  outline: none;
+  transition: border-color 150ms ease;
+}
+#e1-tool .e1-find-input:focus { border-color: var(--c-brand, #1e3a5f); box-shadow: 0 0 0 3px rgba(30,58,95,.18); }
+#e1-tool .e1-find-input.is-nomatch { border-color: var(--c-danger, #9c3030); background: rgba(156,48,48,.06); }
+#e1-tool .e1-find-counter {
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  color: var(--c-fg-3, #6b5d47);
+  padding: 0 8px;
+  min-width: 56px;
+  text-align: center;
+}
+#e1-tool .e1-find-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border: 1px solid var(--c-border, #d4c8ad);
+  border-radius: 5px;
+  background: var(--c-bg-elev, #faf5e9);
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--c-fg-3, #6b5d47);
+  cursor: pointer;
+  font-family: var(--font-mono, monospace);
+  user-select: none;
+}
+#e1-tool .e1-find-checkbox input { margin: 0; cursor: pointer; }
+#e1-tool .e1-find-checkbox:has(input:checked) {
+  background: var(--c-brand, #1e3a5f);
+  color: #fff;
+  border-color: var(--c-brand, #1e3a5f);
+}
+
+#e1-tool .e1-toolbar-spacer { flex: 1; min-width: 16px; }
+#e1-tool .e1-toolbar-label {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--c-fg-3, #6b5d47);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: 0 8px;
+}
+
+/* ===== Editor XML — linee compatte, zebra fisso, gutter numerale via overlay ===== */
+/* Variabili sincronizzate riga-per-riga */
+#e1-tool .e1-editor-overlay-wrap {
+  --ed-fz: 13px;       /* font-size editor */
+  --ed-lh: 20px;       /* line-height fisso (deve corrispondere a quello del codice) */
+  --ed-gutter: 48px;   /* larghezza gutter numerale */
+  --ed-pad-top: 10px;
+  --ed-pad-right: 14px;
+  position: relative;
+  display: block;
+  background: var(--c-bg, #f5efe4);
+  border-radius: 6px;
+  overflow: hidden;
+}
+#e1-tool .e1-xml-editor {
+  width: 100%;
+  min-height: 460px;
+  max-height: 75vh;
+  padding: 10px 14px 10px 56px;
+  border: 0;
+  /* Zebra stripe — pattern composto da 2 fasce di 20px (riga A + riga B) */
+  /* IMPORTANTE: niente background-color separato, tutto dentro background. */
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #f5efe4 0,
+      #f5efe4 20px,
+      #ebe2cd 20px,
+      #ebe2cd 40px
+    );
+  background-attachment: local;
+  background-position: 0 10px;
+  color: var(--c-fg, #2c2418);
+  font-family: var(--font-mono, monospace);
+  font-size: 13px;
+  line-height: 20px;
+  resize: vertical;
+  outline: none;
+  white-space: pre;
+  display: block;
+  box-sizing: border-box;
+  tab-size: 2;
+}
+[data-theme="dark"] #e1-tool .e1-xml-editor {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #1a2030 0,
+      #1a2030 20px,
+      #232a3e 20px,
+      #232a3e 40px
+    );
+  background-attachment: local;
+  background-position: 0 10px;
+}
+#e1-tool .e1-xml-editor:focus {
+  outline: 2px solid rgba(184, 84, 30, 0.25);
+  outline-offset: -2px;
+}
+
+/* Gutter numerale — overlay di sinistra sincronizzato sullo scroll */
+#e1-tool .e1-editor-gutter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--ed-gutter, 48px);
+  height: 100%;
+  padding: var(--ed-pad-top, 10px) 0;
+  /* sfondo solido, leggermente più scuro della carta, così si stacca dalla zebra */
+  background: #e3d8ba;
+  border-right: 1px solid var(--c-border, #d4c8ad);
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  line-height: var(--ed-lh, 20px);
+  color: var(--c-fg-3, #8a7a5d);
+  text-align: right;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  z-index: 3;
+  box-sizing: border-box;
+}
+#e1-tool .e1-editor-gutter > div {
+  padding-right: 8px;
+  font-variant-numeric: tabular-nums;
+}
+[data-theme="dark"] #e1-tool .e1-editor-gutter {
+  background: #15192a;
+  border-right-color: rgba(255, 255, 255, 0.10);
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ----- Action panel (Download) ----- */
+#e1-tool .e1-action-panel {
+  margin: 18px 0;
+  padding: 18px 22px;
+  background: var(--c-bg-2, #ede5d4);
+  border: 1px solid var(--c-border, #d4c8ad);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 760px) { #e1-tool .e1-action-panel { grid-template-columns: 1fr 1fr; } }
+#e1-tool .e1-action {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: var(--c-bg-elev, #faf5e9);
+  border: 1px solid var(--c-border, #d4c8ad);
+  border-radius: 8px;
+}
+#e1-tool .e1-action-icon {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  display: grid; place-items: center;
+  background: var(--c-bg-3, #e2d8c2);
+  color: var(--c-brand, #1e3a5f);
+  border-radius: 8px;
+}
+#e1-tool .e1-action-icon svg { width: 18px; height: 18px; }
+[data-theme="dark"] #e1-tool .e1-action-icon { color: var(--c-brand-2, #7eaadc); }
+#e1-tool .e1-action-body { flex: 1; min-width: 0; }
+#e1-tool .e1-action-title { font-weight: 700; font-size: 14px; margin: 0 0 3px; color: var(--c-fg, #2c2418); }
+#e1-tool .e1-action-desc { font-size: 12.5px; color: var(--c-fg-3, #6b5d47); margin: 0 0 10px; line-height: 1.45; }
+
+/* ----- Dettagli algoritmo ----- */
+#e1-tool .e1-algo {
+  margin: 14px 0;
+  padding: 16px 20px;
+  background: var(--c-code-bg, #e8dec5);
+  border: 1px solid var(--c-border, #d4c8ad);
+  border-radius: 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-fg, #2c2418);
+  text-align: center;
+  word-break: break-all;
+}
+#e1-tool .e1-key-box {
+  margin: 14px 0;
+  padding: 16px 20px;
+  background: var(--c-bg-elev, #faf5e9);
+  border: 1px solid var(--c-border-2, #b8a98a);
+  border-left: 4px solid var(--c-accent, #b8541e);
+  border-radius: 8px;
+}
+#e1-tool .e1-key-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--c-fg-3, #6b5d47);
+  margin-bottom: 6px;
+}
+#e1-tool .e1-key-value {
+  font-family: var(--font-mono, monospace);
+  font-size: 13px;
+  color: var(--c-accent, #b8541e);
+  word-break: break-all;
+  margin-bottom: 12px;
+  display: block;
+}
+#e1-tool .e1-key-value:last-child { margin-bottom: 0; }
+
+/* ----- Code canvas tabbed (Python/JS/PS in un unico riquadro) ----- */
+#e1-tool .e1-codecanvas {
+  margin: 16px 0;
+  background: var(--c-bg-elev, #faf5e9);
+  border: 1px solid var(--c-border-2, #b8a98a);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(74,63,46,.08);
+}
+#e1-tool .e1-cc-tabs {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  padding: 0 6px;
+  background: var(--c-bg-2, #ede5d4);
+  border-bottom: 1px solid var(--c-border, #d4c8ad);
+  flex-wrap: wrap;
+}
+#e1-tool .e1-cc-tab {
+  padding: 10px 18px;
+  border: 0;
+  background: transparent;
+  color: var(--c-fg-2, #4a3f2e);
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 150ms ease;
+}
+#e1-tool .e1-cc-tab:hover { color: var(--c-fg, #2c2418); background: var(--c-bg-3, #e2d8c2); }
+#e1-tool .e1-cc-tab.is-active {
+  color: var(--c-brand, #1e3a5f);
+  border-bottom-color: var(--c-accent, #b8541e);
+  background: var(--c-bg-elev, #faf5e9);
+}
+[data-theme="dark"] #e1-tool .e1-cc-tab.is-active { color: var(--c-brand-2, #7eaadc); }
+#e1-tool .e1-cc-spacer { flex: 1; }
+#e1-tool .e1-cc-copy {
+  margin: 6px 6px 6px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1.5px solid var(--c-border-2, #b8a98a);
+  border-radius: 6px;
+  background: var(--c-bg-elev, #faf5e9);
+  color: var(--c-fg, #2c2418);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 150ms ease;
+}
+#e1-tool .e1-cc-copy:hover { background: var(--c-bg-3, #e2d8c2); border-color: var(--c-fg-3, #6b5d47); }
+#e1-tool .e1-cc-copy.is-copied { background: var(--c-success, #4a7c2a); color: #fff; border-color: var(--c-success, #4a7c2a); }
+#e1-tool .e1-cc-copy svg { width: 14px; height: 14px; }
+#e1-tool .e1-cc-pre {
+  margin: 0;
+  padding: 8px 0;
+  background: transparent;
+  border: 0;
+  font-family: var(--font-mono, monospace);
+  font-size: 12.5px;
+  line-height: 1.4;
+  overflow-x: auto;
+  color: var(--c-fg, #2c2418);
+  max-height: 480px;
+  overflow-y: auto;
+  counter-reset: cc-line;
+}
+#e1-tool .e1-cc-pre code {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  background: transparent !important;
+  padding: 0;
+  border: 0 !important;
+  display: block;
+}
+/* Numerazione righe: gutter a sinistra ottenuto via counter CSS */
+#e1-tool .e1-cc-pre .e1-cc-line {
+  counter-increment: cc-line;
+  display: block;
+  position: relative;
+  padding: 0 14px 0 60px;
+  white-space: pre;
+  line-height: 1.4;
+  transition: background 0.12s ease;
+}
+/* Zebra stripe: righe alternate sfondo leggero */
+#e1-tool .e1-cc-pre .e1-cc-line:nth-child(odd) {
+  background: rgba(184, 84, 30, 0.04);
+}
+[data-theme="dark"] #e1-tool .e1-cc-pre .e1-cc-line:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.025);
+}
+#e1-tool .e1-cc-pre .e1-cc-line:hover {
+  background: rgba(184, 84, 30, 0.10);
+}
+[data-theme="dark"] #e1-tool .e1-cc-pre .e1-cc-line:hover {
+  background: rgba(238, 203, 116, 0.08);
+}
+#e1-tool .e1-cc-pre .e1-cc-line::before {
+  content: counter(cc-line);
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 46px;
+  text-align: right;
+  padding: 1px 10px 1px 0;
+  color: var(--c-fg-3, #8a7a5d);
+  background: rgba(0, 0, 0, 0.04);
+  border-right: 1px solid var(--c-border, #d4c8ad);
+  font-variant-numeric: tabular-nums;
+  font-size: 11px;
+  font-weight: 500;
+  user-select: none;
+  -webkit-user-select: none;
+  opacity: 0.85;
+}
+[data-theme="dark"] #e1-tool .e1-cc-pre .e1-cc-line::before {
+  color: rgba(255,255,255,0.55);
+  background: rgba(255, 255, 255, 0.04);
+  border-right-color: rgba(255,255,255,0.10);
+}
+/* Riga selezionata (hover) — il numero diventa più scuro */
+#e1-tool .e1-cc-pre .e1-cc-line:hover::before {
+  color: var(--c-accent, #b8541e);
+  opacity: 1;
+  background: rgba(184, 84, 30, 0.08);
+}
+[data-theme="dark"] #e1-tool .e1-cc-pre .e1-cc-line:hover::before {
+  color: #ffd97d;
+  background: rgba(238, 203, 116, 0.10);
+}
+/* Rimuovi qualsiasi underline/border decorativo aggiunto da regole legacy */
+#e1-tool .e1-cc-pre,
+#e1-tool .e1-cc-pre code,
+#e1-tool .e1-cc-pre .e1-cc-line {
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+}
+/* Nasconde gli script di snippet (sono solo data) */
+#e1-tool .e1-codecanvas script[type="text/x-e1-snippet"] { display: none; }
+
+/* ----- Find/Replace overlay highlights ----- */
+#e1-tool .e1-editor-overlay-wrap {
+  position: relative;
+  display: block;
+}
+#e1-tool .e1-editor-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  margin: 0;
+  padding: 16px 18px;
+  border: 0;
+  font-family: var(--font-mono, monospace);
+  font-size: 12.5px;
+  line-height: 1.6;
+  white-space: pre;
+  overflow: hidden;
+  pointer-events: none;
+  color: transparent;
+  background: transparent;
+  z-index: 1;
+  box-sizing: border-box;
+  word-wrap: normal;
+}
+#e1-tool .e1-editor-overlay mark {
+  background: rgba(255, 230, 0, 0.45);
+  color: transparent;
+  padding: 0;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(184, 84, 30, 0.4);
+}
+#e1-tool .e1-editor-overlay mark.is-current {
+  background: rgba(255, 140, 0, 0.65);
+  box-shadow: 0 0 0 2px rgba(184, 84, 30, 0.9);
+}
+[data-theme="dark"] #e1-tool .e1-editor-overlay mark {
+  background: rgba(255, 230, 0, 0.30);
+  box-shadow: 0 0 0 1px rgba(255, 200, 100, 0.5);
+}
+[data-theme="dark"] #e1-tool .e1-editor-overlay mark.is-current {
+  background: rgba(255, 165, 0, 0.55);
+  box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.9);
+}
+#e1-tool .e1-editor-overlay-wrap > .e1-xml-editor {
+  position: relative;
+  z-index: 2;
+  /* NOTA: la trasparenza forzata serve solo quando c'è realmente un overlay
+     di highlight attivo. Senza overlay, il textarea conserva il suo zebra. */
+}
+#e1-tool .e1-editor-overlay-wrap.has-overlay > .e1-xml-editor {
+  background: transparent !important;
+  caret-color: var(--c-fg, #2c2418);
+}
+</style>
+
+<div id="e1-tool">
+
+<!-- ===================== SEZIONE 1: UPLOAD ===================== -->
+<section class="e1-upload-section" aria-labelledby="upload-title">
+  <h2 class="e1-upload-title" id="upload-title">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+    1. Carica il file
+  </h2>
+  <p class="e1-upload-sub">
+    Trascina qui sotto un file <strong>.E1</strong> (cifrato), <strong>.EC</strong> (in chiaro), <strong>.AG</strong> (anagrafica AGO) oppure <strong>.XML</strong>.
+    Il tool riconosce automaticamente il tipo e lo decodifica/visualizza nel pannello successivo.
+    Tutto avviene <strong>nel tuo browser</strong>: nessun upload remoto, nessuna traccia esterna.
+  </p>
+
+  <div id="e1-dropzone" class="e1-dropzone" tabindex="0" role="button" aria-label="Trascina o clicca per caricare">
+    <svg class="e1-drop-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="17 8 12 3 7 8"/>
+      <line x1="12" y1="3" x2="12" y2="15"/>
+    </svg>
+    <div class="e1-drop-text">
+      <strong>Trascina qui il tuo file</strong>
+      <small>oppure clicca per sfogliare</small>
+    </div>
+    <div class="e1-drop-formats">
+      <span class="e1-drop-chip"><strong>.E1</strong> cifrato</span>
+      <span class="e1-drop-chip"><strong>.EC</strong> in chiaro</span>
+      <span class="e1-drop-chip"><strong>.AG</strong> anagrafica AGO</span>
+      <span class="e1-drop-chip"><strong>.XML</strong> testo</span>
+    </div>
+    <button type="button" class="e1-pick-button" id="e1-pick-btn" tabindex="-1">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Sfoglia file…
+    </button>
+    <input id="e1-file-input" type="file" accept=".e1,.E1,.xml,.XML,.ec,.EC,.ag,.AG,.txt" hidden>
+  </div>
+
+  <div id="e1-status" class="e1-status is-info" role="status" aria-live="polite">In attesa di un file…</div>
+  <div id="e1-file-meta" class="e1-file-meta"></div>
+</section>
+
+<!-- ===================== SEZIONE 2: EDITOR ===================== -->
+<section id="e1-editor-section" style="display:none;" aria-labelledby="editor-title">
+  <h2 id="editor-title" style="margin-top:32px;">
+    2. Visualizza e modifica l'XML
+  </h2>
+  <p style="margin: 0 0 12px; color: var(--c-fg-2, #4a3f2e); font-size: 14px;">
+    Qui puoi <strong>leggere e modificare</strong> il contenuto decodificato del tuo estratto.
+    Usa la toolbar per indentare, validare o copiare il testo.
+  </p>
+
+  <div class="e1-editor-wrap">
+    <div class="e1-editor-toolbar" role="toolbar" aria-label="Strumenti editor">
+      <span class="e1-toolbar-label">Strumenti:</span>
+      <button type="button" class="e1-btn" id="e1-btn-pretty" title="Riformatta XML con indentazione">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Indenta
+      </button>
+      <button type="button" class="e1-btn" id="e1-btn-format" title="Pulisce spazi anomali, righe vuote multiple, errori di formattazione comuni">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M3 6h18"/><path d="M3 12h12"/><path d="M3 18h6"/><polyline points="17 14 21 18 17 22"/></svg>
+        Formatta codice
+      </button>
+      <button type="button" class="e1-btn" id="e1-btn-validate" title="Verifica che l'XML sia valido">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
+        Valida
+      </button>
+      <button type="button" class="e1-btn" id="e1-btn-copy" title="Copia tutto il testo dell'editor">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copia
+      </button>
+      <button type="button" class="e1-btn" id="e1-btn-find-toggle" title="Apri/chiudi pannello cerca e sostituisci (Ctrl+F)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Cerca / Sostituisci
+      </button>
+      <button type="button" class="e1-btn e1-btn--accent" id="e1-btn-report" title="Genera un report ordinato (tabella + grafici)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+        Genera report
+      </button>
+      <span class="e1-toolbar-spacer"></span>
+      <button type="button" class="e1-btn e1-btn--ghost" id="e1-btn-reset" title="Svuota tutto e ricomincia">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>
+        Reset
+      </button>
+    </div>
+
+    <!-- Pannello CERCA / SOSTITUISCI (toggle, nascosto di default) -->
+    <div id="e1-find-panel" class="e1-find-panel" style="display:none;" role="region" aria-label="Cerca e sostituisci">
+      <div class="e1-find-row">
+        <label class="e1-find-label" for="e1-find-input">Cerca</label>
+        <input type="text" id="e1-find-input" class="e1-find-input" placeholder="Trova nel testo…" autocomplete="off" spellcheck="false">
+        <span class="e1-find-counter" id="e1-find-counter">0 / 0</span>
+        <button type="button" class="e1-btn e1-btn--sm" id="e1-find-prev" title="Risultato precedente (Shift+Enter)" aria-label="Precedente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button type="button" class="e1-btn e1-btn--sm" id="e1-find-next" title="Risultato successivo (Enter)" aria-label="Successivo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <label class="e1-find-checkbox" title="Distingue MAIUSCOLE/minuscole">
+          <input type="checkbox" id="e1-find-case"> <span>Aa</span>
+        </label>
+        <label class="e1-find-checkbox" title="Trova solo la parola intera">
+          <input type="checkbox" id="e1-find-word"> <span>W</span>
+        </label>
+        <label class="e1-find-checkbox" title="Espressione regolare">
+          <input type="checkbox" id="e1-find-regex"> <span>.*</span>
+        </label>
+      </div>
+      <div class="e1-find-row">
+        <label class="e1-find-label" for="e1-replace-input">Sostit.</label>
+        <input type="text" id="e1-replace-input" class="e1-find-input" placeholder="Sostituisci con…" autocomplete="off" spellcheck="false">
+        <button type="button" class="e1-btn e1-btn--sm" id="e1-replace-one" title="Sostituisci ricorrenza corrente">Sostituisci</button>
+        <button type="button" class="e1-btn e1-btn--sm e1-btn--accent" id="e1-replace-all" title="Sostituisci tutte le ricorrenze">Sostituisci tutto</button>
+        <button type="button" class="e1-btn e1-btn--sm e1-btn--ghost" id="e1-find-close" title="Chiudi (Esc)" aria-label="Chiudi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="e1-editor-overlay-wrap">
+      <div id="e1-editor-gutter" class="e1-editor-gutter" aria-hidden="true"></div>
+      <pre id="e1-editor-overlay" class="e1-editor-overlay" aria-hidden="true"></pre>
+      <textarea id="e1-xml-editor" class="e1-xml-editor" spellcheck="false" autocomplete="off" placeholder="Il contenuto XML decodificato apparirà qui…"></textarea>
+    </div>
+  </div>
+
+  <h2 style="margin-top:28px;">
+    3. Scarica il risultato
+  </h2>
+  <p style="margin: 0 0 12px; color: var(--c-fg-2, #4a3f2e); font-size: 14px;">
+    Hai due opzioni: scaricare l'<strong>XML in chiaro</strong> per consultarlo o archiviarlo, oppure rigenerare un <strong>file .E1 modificato</strong> che potrai ricaricare in Carpe.
+  </p>
+
+  <div class="e1-action-panel">
+    <div class="e1-action">
+      <div class="e1-action-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div class="e1-action-body">
+        <h4 class="e1-action-title">Scarica XML in chiaro</h4>
+        <p class="e1-action-desc">Salva il contenuto dell'editor come <code>.xml</code> per consultazione, archiviazione o uso esterno.</p>
+        <button type="button" class="e1-btn" id="e1-btn-download-xml">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Scarica .xml
+        </button>
+      </div>
+    </div>
+
+    <div class="e1-action">
+      <div class="e1-action-icon" style="background: var(--c-accent, #b8541e); color: #fff;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
+      </div>
+      <div class="e1-action-body">
+        <h4 class="e1-action-title">Genera .E1 modificato</h4>
+        <p class="e1-action-desc">Riencode l'XML modificato come file <code>.E1</code> ricaricabile in Carpe per nuovi calcoli.</p>
+        <button type="button" class="e1-btn e1-btn--accent" id="e1-btn-download-e1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Scarica .E1
+        </button>
+      </div>
+    </div>
+
+    <div class="e1-action">
+      <div class="e1-action-icon" style="background: var(--c-success, #4a7c2a); color: #fff;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+      </div>
+      <div class="e1-action-body">
+        <h4 class="e1-action-title">Riencode in .EC ASCII</h4>
+        <p class="e1-action-desc">Riconverte l'XML strutturato (di un .EC parsato) in formato <code>.EC</code> a posizioni fisse compatibile con Carpe.</p>
+        <button type="button" class="e1-btn" id="e1-btn-download-ec" style="background: var(--c-success, #4a7c2a); color: #fff; border-color: var(--c-success, #4a7c2a);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Scarica .EC
+        </button>
+      </div>
+    </div>
+
+    <div class="e1-action">
+      <div class="e1-action-icon" style="background: var(--c-brand, #1f3a64); color: #fff;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M3 7h18"/><path d="M3 12h18"/><path d="M3 17h18"/><circle cx="6" cy="7" r="0.6" fill="currentColor"/><circle cx="6" cy="12" r="0.6" fill="currentColor"/><circle cx="6" cy="17" r="0.6" fill="currentColor"/></svg>
+      </div>
+      <div class="e1-action-body">
+        <h4 class="e1-action-title">Riencode in .AG (anagrafica AGO)</h4>
+        <p class="e1-action-desc">Riconverte l'XML <code>&lt;EstrattoAGO&gt;</code> nel formato <code>.AG</code> ASCII flat-file usato da Carpe per le anagrafiche AGO. Round-trip esatto al byte (Anagrafica + Periodi annuali + payload).</p>
+        <button type="button" class="e1-btn" id="e1-btn-download-ag" style="background: var(--c-brand, #1f3a64); color: #fff; border-color: var(--c-brand, #1f3a64);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Scarica .AG
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SEZIONE 3: ALGORITMO ===================== -->
+<hr style="margin: 36px 0;">
+
+<h2 id="algoritmo">L'algoritmo, in dettaglio</h2>
+<p>Il file <code>.E1</code> è cifrato con una <strong>sottrazione modulo 256</strong> usando una chiave ASCII di 40 byte ciclica. Niente AES, niente compressione. Algoritmo:</p>
+
+<div class="e1-algo">plain[i] = ( e1[i] − key[i mod 40] ) mod 256</div>
+<div class="e1-algo">e1[i]    = ( plain[i] + key[i mod 40] ) mod 256</div>
+
+<div class="e1-key-box">
+  <div class="e1-key-label">Chiave (ASCII, 40 byte) — estratta da Sub-Est.dll → E1READ</div>
+  <code class="e1-key-value" id="e1-key-ascii">…</code>
+  <div class="e1-key-label">Stessa chiave in esadecimale</div>
+  <code class="e1-key-value" id="e1-key-hex">…</code>
+</div>
+
+<h3>Implementazione in 3 linguaggi</h3>
+
+<div class="e1-codecanvas" id="e1-cc" data-active="python">
+  <div class="e1-cc-tabs" role="tablist" aria-label="Linguaggio">
+    <button type="button" class="e1-cc-tab is-active" data-lang="python" role="tab" aria-selected="true">Python</button>
+    <button type="button" class="e1-cc-tab" data-lang="javascript" role="tab" aria-selected="false">JavaScript</button>
+    <button type="button" class="e1-cc-tab" data-lang="powershell" role="tab" aria-selected="false">PowerShell</button>
+    <span class="e1-cc-spacer"></span>
+    <button type="button" class="e1-cc-copy" id="e1-cc-copy" title="Copia il codice grezzo (raw) negli appunti">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      <span class="e1-cc-copy-label">Copia raw</span>
+    </button>
+  </div>
+  <pre class="e1-cc-pre"><code class="e1-cc-code" id="e1-cc-code">KEY = b"1E1eBa59$eCf8$4F7d$9bD2$e7EEbba02393$12f"
+
+def decode_e1(data: bytes) -&gt; bytes:
+    return bytes((b - KEY[i % 40]) &amp; 0xFF
+                 for i, b in enumerate(data))
+
+def encode_e1(data: bytes) -&gt; bytes:
+    return bytes((b + KEY[i % 40]) &amp; 0xFF
+                 for i, b in enumerate(data))
+
+with open("input.e1", "rb") as f:
+    blob = f.read()
+xml = decode_e1(blob).decode("utf-8")
+print(xml)</code></pre>
+  <!-- Snippet RAW (testo originale, copiato dal pulsante "Copia raw") -->
+  <script type="text/x-e1-snippet" data-lang="python">KEY = b"1E1eBa59$eCf8$4F7d$9bD2$e7EEbba02393$12f"
+
+def decode_e1(data: bytes) -&gt; bytes:
+    return bytes((b - KEY[i % 40]) &amp; 0xFF
+                 for i, b in enumerate(data))
+
+def encode_e1(data: bytes) -&gt; bytes:
+    return bytes((b + KEY[i % 40]) &amp; 0xFF
+                 for i, b in enumerate(data))
+
+with open("input.e1", "rb") as f:
+    blob = f.read()
+xml = decode_e1(blob).decode("utf-8")
+print(xml)</script>
+  <script type="text/x-e1-snippet" data-lang="javascript">const KEY = new TextEncoder().encode(
+  "1E1eBa59$eCf8$4F7d$9bD2$e7EEbba02393$12f"
+);
+
+function decodeE1(bytes) {
+  const out = new Uint8Array(bytes.length);
+  for (let i = 0; i &lt; bytes.length; i++)
+    out[i] = (bytes[i] - KEY[i % 40]) &amp; 0xff;
+  return out;
+}
+function encodeE1(bytes) {
+  const out = new Uint8Array(bytes.length);
+  for (let i = 0; i &lt; bytes.length; i++)
+    out[i] = (bytes[i] + KEY[i % 40]) &amp; 0xff;
+  return out;
+}
+
+// Uso (Node.js):
+// const fs = require('fs');
+// const xml = new TextDecoder().decode(decodeE1(fs.readFileSync('input.e1')));
+// console.log(xml);</script>
+  <script type="text/x-e1-snippet" data-lang="powershell">$key = [System.Text.Encoding]::ASCII.GetBytes(
+  "1E1eBa59`$eCf8`$4F7d`$9bD2`$e7EEbba02393`$12f")
+
+$bytes = [IO.File]::ReadAllBytes("input.e1")
+$out = New-Object byte[] $bytes.Length
+for ($i = 0; $i -lt $bytes.Length; $i++) {
+  $out[$i] = ($bytes[$i] - $key[$i % 40]) -band 0xFF
+}
+[IO.File]::WriteAllBytes("output.xml", $out)</script>
+</div>
+
+<hr style="margin: 36px 0;">
+
+<h2 id="evidenze">Evidenze dell'analisi statica</h2>
+<ul>
+  <li><code>Sub-Est.dll</code> esporta <code>E1READ</code>, <code>E1FROME1</code>, <code>ECFROME1</code>, <code>CARICAE1</code>: è il modulo che gestisce davvero la lettura dell'estratto, non <code>ca-r-et.exe</code> che è solo un wrapper.</li>
+  <li>Nel blocco statico di <code>E1READ</code> compaiono in chiaro: <code>\*.E1</code>, <code>E1Read</code>, <code>E1READ</code>, la costante <code>000000040</code> (= lunghezza chiave) e la stringa di 40 caratteri della chiave.</li>
+  <li>Applicando la chiave con sottrazione modulo 256 si ottiene XML valido sia sul file utente sia su un secondo campione indipendente preso dalla cartella <code>SAVEDATA</code> di Carpe.</li>
+  <li>Il primo apostrofo della stringa nel binario è solo un delimitatore, non parte della chiave (verificato per esclusione: con apostrofo l'XML è frammentato).</li>
+</ul>
+
+<h3>Validazione</h3>
+
+<table>
+  <thead>
+    <tr><th>File campione</th><th>XML valido</th><th>Root</th><th>Elementi</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Estratto utente reale</td><td>✓ sì</td><td><code>RispostaEstrattoConto</code></td><td>4025</td></tr>
+    <tr><td>Campione SAVEDATA</td><td>✓ sì</td><td><code>RispostaEstrattoConto</code></td><td>5468</td></tr>
+  </tbody>
+</table>
+
+<hr style="margin: 36px 0;">
+
+<h2 id="struttura-xml">Struttura del file XML decodificato</h2>
+
+<p>L'XML decodificato ha radice <code>&lt;RispostaEstrattoConto&gt;</code> e contiene tipicamente queste sezioni principali (i nomi esatti possono variare):</p>
+
+<ul>
+  <li><strong>Anagrafica assicurato</strong>: cognome, nome, codice fiscale, data e luogo di nascita, indirizzo di residenza.</li>
+  <li><strong>Tabelle codici</strong>: codici contributivi, codici gestione, codici qualifiche, ecc.</li>
+  <li><strong>Periodi contributivi</strong>: lista di record con data inizio/fine, settimane utili, retribuzione, codice azienda, codice contribuzione, gestione di accredito.</li>
+  <li><strong>Anagrafica datori di lavoro</strong>: codice azienda 10 cifre + ragione sociale.</li>
+  <li><strong>Note tecniche e flag</strong>: campi di servizio per la coerenza interna del calcolo Carpe.</li>
+</ul>
+
+<div class="callout callout--info">
+  <span class="callout-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span>
+  <div class="callout-body">
+    <strong>Suggerimento.</strong> Decodifica una volta il tuo .E1, salva l'XML, e usalo come <em>master</em>. Le modifiche che vuoi simulare (retribuzione futura, periodi mancanti, riscatti) le fai sul file XML editandolo nel tool qui sopra. Poi rigeneri il .E1 con il bottone <em>«Scarica .E1 modificato»</em>. Il file E1 risultante può essere ricaricato in Carpe per fare ulteriori calcoli.
+  </div>
+</div>
+
+<hr style="margin: 36px 0;">
+
+<h2 id="avvertenze">Avvertenze importanti</h2>
+
+<div class="callout callout--warn">
+  <span class="callout-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg></span>
+  <div class="callout-body">
+    <strong>Uso lecito.</strong> Strumento concesso solo per uso personale sui propri estratti contributivi.
+  </div>
+</div>
+
+</div><!-- /#e1-tool -->
+
+      </div><!-- /.content -->
+      <footer class="site-footer">
+        <div class="footer-row">
+          <strong>Manuale Restaurato INPS 2026 (by Davide Pica)</strong> — Manuale tecnico-operativo per il software Carpe e la previdenza marittima/elettrici ed AGO.
+        </div>
+        <div class="footer-row footer-credits">
+          Manuale originale (mag. 2005): R. Codeglia, R.A. Milocani.
+          <br>Riadattamento ad uso personale, aprile 2026: <strong>Davide Pica</strong>
+        </div>
+        <div class="footer-row footer-legal">
+          <strong>AVVISO LEGALE.</strong> Tutte le informazioni riportate in questo manuale <strong>vanno verificate presso INPS</strong> e <strong>NON hanno valore legale</strong>, essendo state prodotte ed elaborate <em>in via informale e non ufficiale da Davide Pica nel 2026</em>. Fa fede in ogni caso la documentazione ufficiale pubblicata da INPS e l'attuale quadro normativo.
+        </div>
+      </footer>
+    </main>
+  </div>
+</div>
+<button id="to-top" class="to-top" aria-label="Torna all'inizio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<script src="../assets/js/search-index.js"></script>
+<script src="../assets/js/app.js?v=2026042810"></script>
+<script src="../assets/js/lightbox.js?v=2026042739"></script>
+<script src="../assets/js/e1-codec.js?v=2026042902"></script>
+</body>
+</html>
