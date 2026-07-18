@@ -4177,3 +4177,60 @@ a.sidebar-macro-header.sidebar-macro-header--link {
   overflow: hidden;
   clip: rect(0 0 0 0);
 }
+
+/* ============================================================
+   NORMALIZZAZIONE CONTENUTI LEGACY (manuali/circolari INPS)
+   I documenti originali, convertiti da vecchio HTML/Word,
+   usavano <h3 class="manual-heading"> (senza stile → titoli
+   enormi), <u> (che sembrano link) e <b> diffusi (interi
+   blocchi in grassetto). Qui li portiamo dentro il design
+   system in modo tematico e leggibile, senza stravolgere.
+   ============================================================ */
+
+/* Sottotitoli dei manuali: erano <h3> "nudi", grandi e neri —
+   spesso la conversione vi ha racchiuso interi paragrafi. Ora
+   sono un'etichetta di sezione tematica (navy + barra terracotta),
+   leggibile sia sui titoli brevi sia sui blocchi lunghi. */
+.content .manual-heading {
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 2vw, 17px);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--c-brand);
+  letter-spacing: 0;
+  margin: 1.9em 0 .65em;
+  padding: 3px 0 3px 13px;
+  border-left: 3px solid var(--c-accent);
+}
+[data-theme="dark"] .content .manual-heading { color: var(--c-brand-2); }
+
+/* Blocchi che la conversione aveva erroneamente racchiuso in un <h3>
+   (interi paragrafi): resi come normale testo di lettura, non titoli. */
+.content .manual-block {
+  margin: 0 0 1em;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--c-fg);
+}
+.content .manual-block h3,
+.content .manual-block h4 { margin-top: .6em; }
+
+/* <u> ereditato: NON è un collegamento. Togliamo la sottolineatura
+   che inganna l'occhio e la trasformiamo in un'enfasi discreta. */
+.content u {
+  text-decoration: none;
+  font-weight: 600;
+  color: inherit;
+}
+
+/* <b> ereditato: enfasi più leggera di <strong> (700), per evitare
+   l'effetto "muro di grassetto" dei documenti originali. */
+.content b {
+  font-weight: 600;
+  color: inherit;
+}
+
+/* <center> ereditato: reso come blocco centrato pulito. */
+.content center { display: block; text-align: center; }

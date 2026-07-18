@@ -5,6 +5,13 @@ documentazione **INPS storica** relativa al software **Ca.R.Pe.** (**Ca**lcolo
 della **R**etribuzione media **Pe**nsionabile e ipotesi di rata pensione) e alla
 **previdenza dei lavoratori marittimi** ("Gente di Mare").
 
+### ▶️ Apri il manuale (versione navigabile online)
+
+**→ https://davidebr90.github.io/carpe-manuale-restaurato/**
+
+Si apre direttamente nel browser, senza scaricare nulla. In alternativa,
+scarica il repository e apri `index.html` in locale (funziona anche offline).
+
 > ⚠️ **Progetto individuale, non ufficiale, a scopo informativo e di studio.**
 > Non è collegato a INPS. Leggi il [DISCLAIMER](DISCLAIMER.md) prima dell'uso.
 
@@ -40,6 +47,14 @@ navigazione collassabile, lightbox immagini e viewer PDF integrato — che copre
 | `pages/norme`, `pages/procedura`, `pages/documentazione`, `pages/circolari` | Sezioni del manuale |
 | `pdf/` | Manuali PDF (contenuti INPS, vedi NOTICE) |
 | `mht/` | Risorse estratte dai manuali HTML |
+
+## Documentazione
+
+- **[docs/DOCUMENTAZIONE.md](docs/DOCUMENTAZIONE.md)** — guida completa: tutte le
+  sezioni spiegate una per una, le funzionalità (ricerca, temi, lightbox, viewer
+  PDF, strumento E1) e la struttura tecnica.
+- **[DISCLAIMER.md](DISCLAIMER.md)** — avviso legale completo.
+- **[NOTICE.md](NOTICE.md)** — diritti, attribuzioni e link ufficiali INPS.
 
 ## Licenza
 
