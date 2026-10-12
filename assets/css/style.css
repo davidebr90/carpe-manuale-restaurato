@@ -4674,3 +4674,107 @@ a.sidebar-macro-header.sidebar-macro-header--link {
     transform: none !important;
   }
 }
+
+/* ---- TABELLE LEGACY: impaginazione contro contenuto ---------------------
+   I documenti originali usavano le tabelle per due scopi diversi, e il
+   manuale li trattava allo stesso modo: il risultato erano riquadri attorno
+   a tutto e tabelle di dati spezzate in verticale.                          */
+
+/* Serviva solo a rientrare il testo: non deve sembrare una tabella. */
+main .content table.layout-table,
+main .content table.layout-table > tbody > tr,
+main .content table.layout-table > tbody > tr > td,
+main .content table.layout-table > tbody > tr > th,
+main .mht-content table.layout-table,
+main .mht-content table.layout-table > tbody > tr > td {
+  border: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+main .content table.layout-table { margin: 0 !important; }
+
+/* Due o piu' colonne e nessuna tabella annidata: e' una tabella vera, le
+   mancava solo l'intestazione. */
+main .content table.legacy-grid,
+main .mht-content table.legacy-grid {
+  display: table !important;
+  width: 100% !important;
+  table-layout: auto !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  margin: 16px 0 20px !important;
+  border: 1px solid var(--c-border) !important;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--c-bg-elev);
+}
+main .content table.legacy-grid > tbody > tr,
+main .mht-content table.legacy-grid > tbody > tr {
+  display: table-row !important;
+}
+main .content table.legacy-grid td,
+main .content table.legacy-grid th,
+main .mht-content table.legacy-grid td {
+  display: table-cell !important;
+  width: auto !important;
+  max-width: none !important;
+  vertical-align: top !important;
+  padding: 11px 14px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--c-border) !important;
+  text-align: left !important;
+}
+main .content table.legacy-grid td:first-child,
+main .mht-content table.legacy-grid td:first-child {
+  border-right: 1px solid var(--c-border) !important;
+}
+main .content table.legacy-grid > tbody > tr:last-child td,
+main .mht-content table.legacy-grid > tbody > tr:last-child td {
+  border-bottom: 0 !important;
+}
+main .content table.legacy-grid > tbody > tr:nth-child(even) td,
+main .mht-content table.legacy-grid > tbody > tr:nth-child(even) td {
+  background: var(--c-bg-2);
+}
+/* La seconda colonna dice che cosa fare: va distinta, non urlata. */
+main .content table.legacy-grid td + td {
+  color: var(--c-fg-2);
+}
+
+/* Sotto una certa larghezza due colonne non ci stanno: si impilano, ma
+   restando leggibili come coppia. */
+@media (max-width: 680px) {
+  main .content table.legacy-grid,
+  main .content table.legacy-grid > tbody > tr,
+  main .content table.legacy-grid td {
+    display: block !important;
+    width: auto !important;
+  }
+  main .content table.legacy-grid td:first-child {
+    width: auto !important;
+    border-right: 0 !important;
+    border-bottom: 0 !important;
+    padding-bottom: 2px !important;
+  }
+  main .content table.legacy-grid td + td {
+    padding-top: 2px !important;
+    padding-left: 26px !important;
+    border-bottom: 0 !important;
+  }
+  main .content table.legacy-grid > tbody > tr {
+    border-bottom: 1px solid var(--c-border);
+  }
+  main .content table.legacy-grid > tbody > tr:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* La vecchia colonna di rientro in una tabella di dati non deve occupare
+   spazio ne' disegnare un bordo. */
+main .content table.has-spacer-col > tbody > tr > td:first-child,
+main .mht-content table.has-spacer-col > tbody > tr > td:first-child {
+  width: 0 !important;
+  padding: 0 !important;
+  border-right: 0 !important;
+}

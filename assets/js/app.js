@@ -841,10 +841,27 @@
           return Math.max(max, row.cells ? row.cells.length : 0);
         }, 0);
         const isNested = !!table.parentElement.closest('td, th');
-        const isDataLike = hasSemanticHeader && !hasNestedTable && maxCells > 1;
+        // Una prima colonna vuota su tutte le righe e' il vecchio trucco del
+        // distanziatore per rientrare il testo, non una colonna di dati.
+        const righe = Array.prototype.slice.call(table.rows || []);
+        const primaColonnaVuota = righe.length > 0 && righe.every(function (row) {
+          const c = row.cells && row.cells[0];
+          if (!c) return true;
+          if (c.querySelector('img, table, svg, hr, input')) return false;
+          return !(c.textContent || '').replace(/ /g, '').trim();
+        });
+        // Nei documenti originali una tabella che ne contiene un'altra, o che ha
+        // una sola colonna, serviva a rientrare il testo: non espone dati.
+        const isLayout = hasNestedTable || maxCells < 2 ||
+                         (primaColonnaVuota && maxCells === 2);
+        const isDataLike = hasSemanticHeader && !isLayout;
 
         table.classList.add(isDataLike ? 'data-table' : 'legacy-table');
         if (isNested) table.classList.add('nested-table');
+        if (isLayout) table.classList.add('layout-table');
+        else if (!isDataLike) table.classList.add('legacy-grid');
+        // Colonna di rientro sopravvissuta in una tabella di dati: si collassa.
+        if (!isLayout && primaColonnaVuota) table.classList.add('has-spacer-col');
 
         if (isDataLike) {
           const headers = Array.prototype.map.call(table.querySelectorAll('thead th'), function (th) {
@@ -864,7 +881,7 @@
           if (el.tagName && el.tagName.toLowerCase() !== 'img') el.removeAttribute('width');
         });
 
-        if (isNested && !isDataLike) {
+        if (isLayout) {
           table.style.display = 'block';
           table.style.width = '100%';
           Array.prototype.forEach.call(table.rows || [], function (row) {
@@ -874,6 +891,11 @@
               cell.style.display = 'block';
               cell.style.width = '100%';
               cell.style.maxWidth = '100%';
+              // Le celle-distanziatore dei vecchi layout lasciavano buchi vuoti.
+              const testo = (cell.textContent || '').replace(/\u00a0/g, '').trim();
+              if (!testo && !cell.querySelector('img, table, svg, hr')) {
+                cell.style.display = 'none';
+              }
             });
           });
         }
