@@ -220,7 +220,11 @@ stimato nella <a href="decidere.html">pagina della decisione</a>.</p>
 per esempio una a 125.000 e una a 130.000 euro.</li>
 <li>Calcolare <code>m = (onere2 &minus; onere1) &divide; (R12b &minus; R12a)</code>. Se viene intorno a 5 la
 formula di questa pagina è confermata; se viene intorno a 10 la procedura non applica il dimezzamento.</li>
-<li>Ricavare la soglia esatta all'indietro: <code>soglia = R12a &minus; onere1 &divide; m</code>.</li>
+<li>Ricavare la soglia all'indietro <strong>solo se l'onere non contiene una quota fissa</strong>:
+<code>soglia = R12a &minus; onere1 &divide; m</code>. Se invece esiste una componente fissa <code>F</code>
+(per esempio una quota retributiva dovuta comunque), la formula corretta &egrave;
+<code>soglia = R12a &minus; (onere1 &minus; F) &divide; m</code> e <strong>con F ignota la soglia non &egrave;
+ricavabile</strong> da due soli punti: due simulazioni danno la pendenza, non il punto di partenza.</li>
 </ol>
 
 <div class="callout"><span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span><div class="callout-body"><strong>Se il rapporto non è costante.</strong> Se fra coppie di punti diverse il
