@@ -826,6 +826,66 @@
     });
   }
 
+  /* ============================================================
+     MARCATORI IN LINEA
+     Le iconcine dei manuali originali (gif da 8-22px) stanno sulla linea
+     di base del testo, quindi sembrano cadute in basso. Qui si centrano
+     sulla riga; dove il marcatore e' seguito da un'etichetta breve e da un
+     a capo, quell'etichetta viene resa riconoscibile invece di confondersi
+     con il messaggio che la segue.
+     ============================================================ */
+  function initInlineMarkers() {
+    const containers = document.querySelectorAll('main .content, main .mht-content');
+    if (!containers.length) return;
+
+    containers.forEach(function (container) {
+      container.querySelectorAll('img').forEach(function (img) {
+        if (img.classList.contains('inline-marker')) return;
+        const dichiarata = parseInt(img.getAttribute('width') || '0', 10);
+        const naturale = img.naturalWidth || 0;
+        const piccola = (dichiarata > 0 && dichiarata <= 24) ||
+                        (dichiarata === 0 && naturale > 0 && naturale <= 24);
+        if (!piccola) return;
+        img.classList.add('inline-marker');
+
+        // Etichetta di contesto: i nodi fra il marcatore e il primo <br>.
+        const nodi = [];
+        let testo = '';
+        let n = img.nextSibling;
+        while (n) {
+          if (n.nodeType === 1 && n.tagName === 'BR') break;
+          if (n.nodeType === 1 && (n.tagName === 'IMG' || n.tagName === 'TABLE')) return;
+          testo += n.textContent || '';
+          nodi.push(n);
+          n = n.nextSibling;
+        }
+        // Fine del blocco al posto dell'a capo: vale solo se il blocco e' una
+        // sequenza di righe con marcatore, cioe' contiene altri a capo. Cosi'
+        // l'ultima voce di una legenda viene trattata come le precedenti, ma
+        // una didascalia isolata resta testo normale.
+        if (!n) {
+          // Senza a capo finale vale solo dentro una legenda, cioe' un blocco
+          // con piu' marcatori: una didascalia isolata resta testo normale.
+          const padre = img.parentNode;
+          if (!padre || !padre.querySelectorAll) return;
+          if (!padre.querySelector('br')) return;
+          if (padre.querySelectorAll('img').length < 2) return;
+        }
+        if (!nodi.length) return;
+        const pulito = testo.replace(/\u00a0/g, ' ').replace(/\s+/g, ' ').trim();
+        if (!pulito || pulito.length > 40) return;
+
+        const span = document.createElement('span');
+        span.className = 'marker-label';
+        span.textContent = pulito;
+        nodi[0].parentNode.replaceChild(span, nodi[0]);
+        for (let i = 1; i < nodi.length; i++) {
+          if (nodi[i].parentNode) nodi[i].parentNode.removeChild(nodi[i]);
+        }
+      });
+    });
+  }
+
   function initResponsiveTables() {
     const containers = document.querySelectorAll('main .content, main .mht-content');
     if (!containers.length) return;
@@ -912,6 +972,7 @@
     setTimeout(function () {
       document.querySelectorAll('main table.data-table').forEach(unstackDataTable);
     }, 0);
+    initInlineMarkers();
   }
 
   function unstackDataTable(table) {

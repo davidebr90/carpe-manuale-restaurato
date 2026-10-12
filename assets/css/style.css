@@ -4778,3 +4778,44 @@ main .mht-content table.has-spacer-col > tbody > tr > td:first-child {
   padding: 0 !important;
   border-right: 0 !important;
 }
+
+/* ---- MARCATORI IN LINEA E LORO ETICHETTA -------------------------------
+   Le iconcine dei manuali originali poggiavano sulla linea di base e
+   sembravano scivolate sotto al testo; l'etichetta che le accompagna era
+   indistinguibile dal messaggio.                                          */
+main .content img.inline-marker,
+main .mht-content img.inline-marker {
+  vertical-align: middle;
+  margin: 0 2px 0 0;
+  flex: none;
+}
+
+main .content .marker-label,
+main .mht-content .marker-label {
+  display: inline-block;
+  margin-left: 9px;
+  vertical-align: middle;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: .78em;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--c-fg-3);
+}
+/* La riga sotto l'etichetta e' il messaggio vero: va staccata di un filo. */
+main .content .marker-label + br {
+  line-height: 2.1;
+}
+
+/* Se la gif manca, il segnaposto generico da 80px sfigurerebbe la riga:
+   al suo posto un punto neutro delle dimensioni giuste. */
+main .content img.inline-marker[style*="dashed"],
+main .mht-content img.inline-marker[style*="dashed"] {
+  min-width: 10px !important;
+  min-height: 10px !important;
+  width: 10px !important;
+  height: 10px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  border-style: solid !important;
+}
