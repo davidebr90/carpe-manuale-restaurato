@@ -4912,3 +4912,26 @@ main .mht-content img.inline-marker[style*="dashed"] {
   position: relative;
   z-index: 2;
 }
+
+/* ---- ANCORE SENZA DESTINAZIONE -----------------------------------------
+   Nei documenti originali le ancore servivano come bersaglio dei
+   collegamenti interni e spesso avvolgono un titolo o un'intera riga. Non
+   avendo href non portano da nessuna parte, ma la regola generale sui link
+   le coloriva e sottolineava lo stesso: sembravano collegamenti e si
+   illuminavano al passaggio del mouse senza fare nulla.                    */
+.content a:not([href]),
+.mht-content a:not([href]),
+.content a[href=""],
+.content a[href^="javascript:"] {
+  color: inherit !important;
+  text-decoration: none !important;
+  cursor: inherit !important;
+  background: none !important;
+}
+.content a:not([href]):hover,
+.mht-content a:not([href]):hover,
+.content a[href=""]:hover,
+.content a[href^="javascript:"]:hover {
+  color: inherit !important;
+  text-decoration: none !important;
+}
