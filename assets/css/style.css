@@ -4819,3 +4819,69 @@ main .mht-content img.inline-marker[style*="dashed"] {
   border-radius: 50% !important;
   border-style: solid !important;
 }
+
+/* ---- PULSANTI DEI SOTTO-MENU: stessa leggibilita' su tutte le card ------
+   La sezione Esodo era rimasta fuori dall'elenco che assegna lo sfondo, e i
+   suoi pulsanti sembravano testo invece che comandi. L'hover, inoltre, usava
+   un colore comune a tutte le card: ora prende la tinta della propria.      */
+.sidebar-macro[data-macro="home"]  .sidebar-section-header,
+.sidebar-macro[data-macro="esodo"] .sidebar-section-header,
+.sidebar-macro[data-macro="carpe"] .sidebar-section-header,
+.sidebar-macro[data-macro="gdm"]   .sidebar-section-header {
+  color: var(--c-fg) !important;
+  opacity: 1 !important;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.45) !important;
+  border: 1px solid hsl(var(--mc-h) var(--mc-s) var(--mc-l) / .24) !important;
+  border-radius: 6px;
+  margin: 4px 0 2px;
+  transition:
+    background-color var(--mo-quick) var(--mo-standard),
+    border-color     var(--mo-quick) var(--mo-standard),
+    color            var(--mo-quick) var(--mo-standard);
+}
+[data-theme="dark"] .sidebar-macro[data-macro="home"]  .sidebar-section-header,
+[data-theme="dark"] .sidebar-macro[data-macro="esodo"] .sidebar-section-header,
+[data-theme="dark"] .sidebar-macro[data-macro="carpe"] .sidebar-section-header,
+[data-theme="dark"] .sidebar-macro[data-macro="gdm"]   .sidebar-section-header {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: hsl(var(--mc-h) var(--mc-s) var(--mc-l) / .34) !important;
+  color: var(--c-fg) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sidebar-macro[data-macro="home"]  .sidebar-section-header:hover,
+  .sidebar-macro[data-macro="esodo"] .sidebar-section-header:hover,
+  .sidebar-macro[data-macro="carpe"] .sidebar-section-header:hover,
+  .sidebar-macro[data-macro="gdm"]   .sidebar-section-header:hover {
+    background: hsl(var(--mc-h) var(--mc-s) var(--mc-l) / .18) !important;
+    border-color: var(--mc-edge-hot) !important;
+    color: var(--mc-edge-hot) !important;
+  }
+}
+/* Sezione aperta: il pulsante resta riconoscibile come attivo. */
+.sidebar-macro[data-macro] .sidebar-section-header[aria-expanded="true"] {
+  border-color: hsl(var(--mc-h) var(--mc-s) var(--mc-l) / .45) !important;
+}
+
+/* ---- ALTEZZA CHIUSA: non deve impedire l'apertura ----------------------
+   L'altezza a riposo delle card e' imposta con !important per pareggiarle
+   fra loro, ma cosi' vinceva anche sulle regole di apertura: la sezione
+   attiva restava tagliata e mostrava solo le prime voci.                   */
+.sidebar-macro[data-macro="esodo"].is-active-section,
+.sidebar-macro[data-macro="esodo"].is-tap-open {
+  max-height: var(--esodo-h-open) !important;
+}
+.sidebar-macro[data-macro="carpe"].is-active-section,
+.sidebar-macro[data-macro="carpe"].is-tap-open {
+  max-height: var(--carpe-h-open) !important;
+}
+.sidebar-macro[data-macro="gdm"].is-active-section,
+.sidebar-macro[data-macro="gdm"].is-tap-open {
+  max-height: var(--gdm-h-open) !important;
+}
+@media (hover: hover) and (pointer: fine) {
+  .sidebar-macro[data-macro="esodo"]:hover { max-height: var(--esodo-h-open) !important; }
+  .sidebar-macro[data-macro="carpe"]:hover { max-height: var(--carpe-h-open) !important; }
+  .sidebar-macro[data-macro="gdm"]:hover   { max-height: var(--gdm-h-open)   !important; }
+}
