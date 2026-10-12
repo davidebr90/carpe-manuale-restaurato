@@ -205,11 +205,17 @@ contributivi.</p>
 <tr><td><code>Q<sub>retr</sub> = 2% &times; A<sub>retr</sub> &times; stipendio FPLD</code></td><td>La quota annua, semplificata: il 2 per cento per ogni anno retributivo, con il tetto.</td></tr>
 <tr><td><code>Valore<sub>contr</sub> = 33% &times; R12 &times; A<sub>contr</sub></code></td><td>Per gli anni contributivi vale la regola dei riscatti: aliquota per lo stipendio degli ultimi dodici mesi per gli anni.</td></tr>
 <tr><td><code>C = &sum; (stipendio &times; aliquota) &times; 1,045<sup>n</sup></code></td><td>Ogni anno di contributi rivalutato al 4,5 per cento composto.</td></tr>
-<tr><td><code>Onere<sub>retr</sub> = &frac12; &times; max(0, Q<sub>retr</sub>&times;k &minus; C<sub>retr</sub>)</code></td><td>Se viene negativo vale zero: è la regola della Corte Costituzionale.</td></tr>
+<tr><td><code>Onere<sub>retr</sub> = &frac12; &times; max(0, Q<sub>retr</sub>&times;k &minus; C<sub>retr</sub>)</code></td><td>Se viene negativo vale zero: non si paga nulla, ma non si ottiene nulla indietro.</td></tr>
 <tr><td><code>Onere<sub>contr</sub> = &frac12; &times; max(0, 33%&times;R12&times;A<sub>contr</sub> &minus; C<sub>contr</sub>)</code></td><td><strong>È la riga che genera la soglia</strong> e la scala di cui parla la pagina seguente.</td></tr>
 <tr><td><code>Onere = Onere<sub>retr</sub> + Onere<sub>contr</sub></code></td><td>La somma delle due componenti, ciascuna mai sotto zero.</td></tr>
 </tbody>
 </table>
+
+<div class="callout callout--warn"><span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><div class="callout-body"><strong>Un punto che non ho potuto chiudere: dove si applica il <code>max</code>.</strong>
+Qui il minimo a zero è messo su ciascuna delle due componenti separatamente. Se invece la procedura lo applicasse
+al totale, una componente retributiva in negativo potrebbe compensare quella contributiva e abbassare, o azzerare,
+l'onere complessivo. Le due letture danno risultati diversi e non ho trovato una fonte che dica quale sia quella
+giusta: sul caso concreto fa fede solo il conteggio di Ca.R.Pe. o dell'INPS.</div></div>
 
 <h2 id="esempio">I numeri dell'esempio</h2>
 <div class="callout callout--warn"><span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><div class="callout-body"><strong>Profilo di esempio.</strong> Un turnista con quell'inquadramento, circa quarant'anni

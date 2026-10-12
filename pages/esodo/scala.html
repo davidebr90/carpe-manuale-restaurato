@@ -154,11 +154,17 @@ curva, è la pendenza.</p>
 <div class="formula">sforamento = R12 &minus; soglia<br>
 onere = sforamento &times; m<br>
 m = &frac12; &times; 33% &times; A<sub>contr</sub> = &frac12; &times; 0,33 &times; 31 = <b>circa 5,1</b><br>
-variante senza il dimezzamento: m = 0,33 &times; 31 = <b>circa 10,2</b></div>
+ipotesi prudenziale, senza il dimezzamento: m = 0,33 &times; 31 = <b>circa 10,2</b></div>
 
-<p>Tradotto: <strong>ogni euro che supera la soglia vale circa cinque euro di onere</strong>, dieci nella variante
-in cui la procedura non applica il dimezzamento alla componente contributiva. Lo sforamento è la base, non
-l'onere.</p>
+<p>Tradotto: <strong>ogni euro che supera la soglia vale circa cinque euro di onere</strong>. Lo sforamento è la
+base, non l'onere.</p>
+
+<div class="callout callout--warn"><span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><div class="callout-body"><strong>Perché c'è una seconda riga.</strong> Il 5,1 nasce dal dimezzamento scritto nella
+formula dell'onere. Il 10,2 è la stessa pendenza senza quel dimezzamento, tenuta qui come <strong>ipotesi
+prudenziale</strong>: serve a non farsi trovare impreparati se la procedura calcolasse per intero la componente
+contributiva. Non è una regola documentata e non ho trovato una fonte che dica quale delle due si applichi. Il
+moltiplicatore vero del caso concreto si ricava soltanto dalle due simulazioni Ca.R.Pe. descritte più
+sotto.</div></div>
 
 <figure class="chart">
 <svg viewBox="0 0 680 330" role="img" aria-label="Grafico dell'onere lordo in funzione dell'imponibile dei dodici mesi">
@@ -178,7 +184,7 @@ l'onere.</p>
     <line x1="88" y1="46" x2="124" y2="46" style="stroke:var(--c-accent)" stroke-width="3"/>
     <text x="132" y="50" style="fill:var(--c-fg-2)">onere lordo, &#215; 5,1 secondo la formula</text>
     <line x1="88" y1="66" x2="124" y2="66" style="stroke:var(--c-brand)" stroke-width="2" stroke-dasharray="6 4"/>
-    <text x="132" y="70" style="fill:var(--c-fg-2)">variante senza dimezzamento, &#215; 10,2</text>
+    <text x="132" y="70" style="fill:var(--c-fg-2)">ipotesi prudenziale senza dimezzamento, &#215; 10,2</text>
     <line x1="88" y1="86" x2="124" y2="86" style="stroke:var(--c-fg-3)" stroke-width="2" stroke-dasharray="3 3"/>
     <text x="132" y="90" style="fill:var(--c-fg-2)">costo netto, dopo la deduzione fiscale</text>
   </g>
@@ -194,15 +200,15 @@ eleva a potenza.</p>
 <div class="param-history">
 <table class="data-table">
 <thead><tr>
-<th>Sforamento</th><th>Onere lordo (&times;&nbsp;5,1)</th><th>Variante (&times;&nbsp;10,2)</th>
+<th>Sforamento</th><th>Onere lordo (&times;&nbsp;5,1)</th><th>Ipotesi prudenziale (&times;&nbsp;10,2)</th>
 <th>Costo netto</th><th>Anni di vantaggio bruciati</th>
 </tr></thead>
 <tbody>
 <tr><td>100 &euro;</td><td>510 &euro;</td><td>1.020 &euro;</td><td>280 &euro;</td><td>meno di uno</td></tr>
 <tr><td>500 &euro;</td><td>2.550 &euro;</td><td>5.100 &euro;</td><td>1.400 &euro;</td><td>circa uno</td></tr>
-<tr><td>1.000 &euro;</td><td>5.100 &euro;</td><td>10.200 &euro;</td><td>2.800 &euro;</td><td>due, quattro nella variante</td></tr>
-<tr><td>2.500 &euro;</td><td>12.750 &euro;</td><td>25.500 &euro;</td><td>7.000 &euro;</td><td>cinque, undici nella variante</td></tr>
-<tr><td>5.000 &euro;</td><td>25.500 &euro;</td><td>51.000 &euro;</td><td>14.000 &euro;</td><td>undici, ventidue nella variante</td></tr>
+<tr><td>1.000 &euro;</td><td>5.100 &euro;</td><td>10.200 &euro;</td><td>2.800 &euro;</td><td>due, quattro con l'ipotesi prudenziale</td></tr>
+<tr><td>2.500 &euro;</td><td>12.750 &euro;</td><td>25.500 &euro;</td><td>7.000 &euro;</td><td>cinque, undici con l'ipotesi prudenziale</td></tr>
+<tr><td>5.000 &euro;</td><td>25.500 &euro;</td><td>51.000 &euro;</td><td>14.000 &euro;</td><td>undici, ventidue con l'ipotesi prudenziale</td></tr>
 <tr><td>10.000 &euro;</td><td>51.000 &euro;</td><td>102.000 &euro;</td><td>28.000 &euro;</td><td>oltre il vantaggio totale</td></tr>
 </tbody>
 </table>
