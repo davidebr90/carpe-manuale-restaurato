@@ -4935,3 +4935,30 @@ main .mht-content img.inline-marker[style*="dashed"] {
   color: inherit !important;
   text-decoration: none !important;
 }
+
+/* ---- ELENCHI DI VALORI APPIATTITI IN UNA CELLA -------------------------
+   Il sorgente originale separava i valori con un a capo; l'HTML li
+   comprimeva in spazi, incollando tutto in un blocco illeggibile.         */
+main .content .manual-block.block-list,
+main .content .manual-heading.block-list,
+main .mht-content .manual-block.block-list {
+  white-space: pre-line;
+  line-height: 1.5;
+}
+/* L'intestazione di colonna non deve restare schiacciata: ogni riga sta su
+   una riga sola e la cella si prende la larghezza che le serve. */
+main .content td > .manual-heading.block-list,
+main .mht-content td > .manual-heading.block-list {
+  white-space: pre-line;
+  hyphens: none;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  min-width: 8.5em;
+}
+/* Le celle di un elenco di valori restano in alto e non si allargano
+   oltre il necessario. */
+main .content table.legacy-grid td:has(> .manual-heading) {
+  width: 1%;
+  white-space: normal;
+  vertical-align: top;
+}

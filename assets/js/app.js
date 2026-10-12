@@ -834,6 +834,30 @@
      a capo, quell'etichetta viene resa riconoscibile invece di confondersi
      con il messaggio che la segue.
      ============================================================ */
+  /* ============================================================
+     ELENCHI DI VALORI APPIATTITI IN UNA CELLA
+     In alcune tabelle convertite i valori di piu' colonne sono finiti in
+     un'unica cella, separati solo da un a capo nel sorgente. L'HTML
+     comprime gli a capo in spazi, quindi il risultato e' un blocco di
+     testo incollato. Qui gli a capo originali vengono conservati.
+     ============================================================ */
+  function initBlocchiElenco() {
+    const blocchi = document.querySelectorAll(
+      'main .content td > .manual-block, main .content td > .manual-heading,' +
+      'main .mht-content td > .manual-block'
+    );
+    blocchi.forEach(function (b) {
+      if (b.classList.contains('block-list')) return;
+      const righe = (b.textContent || '').split(/\r?\n/)
+        .map(function (r) { return r.trim(); })
+        .filter(function (r) { return r.length > 0; });
+      if (righe.length < 2) return;
+      const media = righe.reduce(function (n, r) { return n + r.length; }, 0) / righe.length;
+      // Righe molte e brevi: e' un elenco di valori, non un paragrafo.
+      if (righe.length >= 2 && media < 34) b.classList.add('block-list');
+    });
+  }
+
   function initInlineMarkers() {
     const containers = document.querySelectorAll('main .content, main .mht-content');
     if (!containers.length) return;
@@ -973,6 +997,7 @@
       document.querySelectorAll('main table.data-table').forEach(unstackDataTable);
     }, 0);
     initInlineMarkers();
+    initBlocchiElenco();
   }
 
   function unstackDataTable(table) {
