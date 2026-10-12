@@ -4885,3 +4885,30 @@ main .mht-content img.inline-marker[style*="dashed"] {
   .sidebar-macro[data-macro="carpe"]:hover { max-height: var(--carpe-h-open) !important; }
   .sidebar-macro[data-macro="gdm"]:hover   { max-height: var(--gdm-h-open)   !important; }
 }
+
+/* ---- FONDO SOTTO LE VOCI DI MENU ---------------------------------------
+   Le card hanno un'illustrazione animata dietro al contenuto: senza un
+   fondo sotto le voci, il disegno traspare attraverso i pulsanti e il testo
+   perde contrasto. La regola esisteva gia' ma elencava solo tre card su
+   quattro, e la sezione Esodo era rimasta scoperta proprio dove il disegno
+   dorato e' piu' chiaro.                                                   */
+.sidebar-macro[data-macro="esodo"] > .sidebar-section {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 8px;
+  margin: 0 6px 4px;
+  padding: 4px 4px;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+[data-theme="dark"] .sidebar-macro[data-macro="esodo"] > .sidebar-section {
+  background: rgba(11, 16, 24, 0.55);
+}
+/* Anche per le altre tre: il contenuto deve stare sopra l'illustrazione. */
+.sidebar-macro[data-macro="home"]  > .sidebar-section,
+.sidebar-macro[data-macro="carpe"] > .sidebar-section,
+.sidebar-macro[data-macro="gdm"]   > .sidebar-section {
+  position: relative;
+  z-index: 2;
+}
