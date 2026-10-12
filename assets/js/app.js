@@ -267,7 +267,7 @@
       wrap.className = 'macro-wave-wrap macro-wave-wrap--gdm';
       wrap.setAttribute('aria-hidden', 'true');
       const svg = buildWaveSvg('gdm-wave-' + idx, {
-        l1: '#2a5285', l2: '#7eaadc', l3: '#b8541e', l4: '#1f3a64'
+        l1: '#2a5285', l2: '#7eaadc', l3: '#5e9ec7', l4: '#1f3a64'
       });
       wrap.appendChild(svg);
       macro.insertBefore(wrap, macro.firstChild);
@@ -279,9 +279,74 @@
       const wrap = document.createElement('span');
       wrap.className = 'macro-wave-wrap macro-wave-wrap--carpe';
       wrap.setAttribute('aria-hidden', 'true');
-      // Per Carpe usiamo le stesse onde ma in palette oro/sabbia
+      // Per Carpe le stesse onde in palette terracotta: il giallo resta
+      // riservato alla sezione Esodo.
       const svg = buildWaveSvg('carpe-wave-' + idx, {
-        l1: '#eecb74', l2: '#b8541e', l3: '#5a3a18', l4: '#c9923c'
+        l1: '#d98b5f', l2: '#b8541e', l3: '#5a3a18', l4: '#8a3d12'
+      });
+      wrap.appendChild(svg);
+      macro.insertBefore(wrap, macro.firstChild);
+    });
+
+    // === ESODO: impulso elettrico dorato ===
+    // Non onde ma una dente di sega: la sezione parla di Fondo Elettrici, e
+    // serviva una figura che si distinguesse dal mare e dalla sabbia.
+    function buildPulseSvg(uid, pathColor) {
+      const svg = document.createElementNS(SVG_NS, 'svg');
+      svg.setAttribute('class', 'macro-wave-svg');
+      svg.setAttribute('viewBox', '0 24 150 28');
+      svg.setAttribute('preserveAspectRatio', 'none');
+      svg.setAttribute('aria-hidden', 'true');
+
+      const defs = document.createElementNS(SVG_NS, 'defs');
+      const pulsePath = document.createElementNS(SVG_NS, 'path');
+      pulsePath.setAttribute('id', uid);
+      // Dente di sega con periodo 90 unita', cosi' la traslazione di 90 chiude
+      // il giro senza salti.
+      pulsePath.setAttribute('d',
+        'M-160 44 l45 -14 l45 14 l45 -14 l45 14 l45 -14 l45 14 l45 -14 l45 14 v44 h-360 z'
+      );
+      defs.appendChild(pulsePath);
+      svg.appendChild(defs);
+
+      const layers = [
+        { delay: '-1s', dur: '6s',  opacity: 0.68, fill: pathColor.l1, y: 0 },
+        { delay: '-3s', dur: '9s',  opacity: 0.46, fill: pathColor.l2, y: 3 },
+        { delay: '-5s', dur: '14s', opacity: 0.28, fill: pathColor.l3, y: 5 },
+        { delay: '-2s', dur: '21s', opacity: 0.95, fill: pathColor.l4, y: 8 }
+      ];
+      layers.forEach(function (l, i) {
+        const g = document.createElementNS(SVG_NS, 'g');
+        g.setAttribute('class', 'macro-wave-parallax macro-wave-parallax--' + (i + 1));
+        const animTr = document.createElementNS(SVG_NS, 'animateTransform');
+        animTr.setAttribute('attributeName', 'transform');
+        animTr.setAttribute('attributeType', 'XML');
+        animTr.setAttribute('type', 'translate');
+        animTr.setAttribute('values', '-90 ' + l.y + '; 0 ' + l.y);
+        animTr.setAttribute('dur', l.dur);
+        animTr.setAttribute('begin', l.delay);
+        animTr.setAttribute('repeatCount', 'indefinite');
+        animTr.setAttribute('calcMode', 'linear');
+        g.appendChild(animTr);
+        const useEl = document.createElementNS(SVG_NS, 'use');
+        useEl.setAttributeNS(XLINK, 'xlink:href', '#' + uid);
+        useEl.setAttribute('href', '#' + uid);
+        useEl.setAttribute('fill', l.fill);
+        useEl.setAttribute('fill-opacity', l.opacity);
+        g.appendChild(useEl);
+        svg.appendChild(g);
+      });
+      return svg;
+    }
+
+    document.querySelectorAll('.sidebar-macro[data-macro="esodo"]').forEach(function (macro, idx) {
+      const old = macro.querySelector('.macro-wave-wrap');
+      if (old) old.remove();
+      const wrap = document.createElement('span');
+      wrap.className = 'macro-wave-wrap macro-wave-wrap--esodo';
+      wrap.setAttribute('aria-hidden', 'true');
+      const svg = buildPulseSvg('esodo-pulse-' + idx, {
+        l1: '#eecb74', l2: '#d9b05a', l3: '#8a6a1e', l4: '#c9923c'
       });
       wrap.appendChild(svg);
       macro.insertBefore(wrap, macro.firstChild);
@@ -868,7 +933,8 @@
       row.style.removeProperty('border-radius');
       row.style.removeProperty('background');
 
-      Array.prototype.forEach.call(row.cells || [], function (cell) {
+      Array.prototype.forEach.call(row.cells || [], function (cell, cellIndex) {
+        const first = cellIndex === 0;
         const label = cell.querySelector(':scope > .table-cell-label');
         if (label) label.remove();
 

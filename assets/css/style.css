@@ -2834,46 +2834,19 @@ main a.back-to-top-link svg {
               transform 0.35s cubic-bezier(.2,.8,.2,1) 0s;
 }
 
-/* ===== HOVER: virata calda (rosso/oro), apertura ===== */
+/* ===== HOVER: la card si apre e si satura, restando sul proprio blu ===== */
 @media (hover: hover) and (pointer: fine) {
   .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section) {
     max-height: var(--gdm-h-open);
-    border-color: #b8541e;          /* terracotta caldo */
     background: linear-gradient(180deg,
-      rgba(184, 84, 30, 0.10) 0%,
-      rgba(184, 84, 30, 0.05) 60%,
+      hsl(var(--mc-h) var(--mc-s) var(--mc-l) / .16) 0%,
+      hsl(var(--mc-h) var(--mc-s) var(--mc-l) / .07) 60%,
       transparent 100%);
-    box-shadow:
-      inset 0 0 0 1px rgba(255, 255, 255, .35),
-      0 6px 18px rgba(184, 84, 30, 0.20);
-  }
-  /* onde virate al rosso/arancio + ferme */
-  .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section)::before {
-    animation-play-state: paused;
-    filter: hue-rotate(-200deg) saturate(1.4) brightness(1.05);
-  }
-  /* barchetta: ferma a galleggiare al centro */
-  .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section) .sidebar-macro-header::before {
-    animation-play-state: paused;
-    filter: hue-rotate(-200deg) saturate(1.4);
-  }
-  /* testi → toni caldi */
-  .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section) .sidebar-macro-title {
-    color: #b8541e;
-  }
-  [data-theme="dark"] .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section) .sidebar-macro-title {
-    color: #e89868;
-  }
-  .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section) .sidebar-macro-sub {
-    color: #8c4014;
-  }
-  [data-theme="dark"] .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section) .sidebar-macro-sub {
-    color: rgba(232, 152, 104, 0.85);
   }
   /* chevron ruota */
   .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section) > .sidebar-macro-header::after {
     transform: translateY(-30%) rotate(225deg);
-    border-color: #b8541e;
+    border-color: var(--mc-edge-hot);
   }
   /* sub-section visibili */
   .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section) > .sidebar-section {
@@ -3308,10 +3281,10 @@ main table.legacy-table tr:last-child th,
   100% { opacity: 0.9; transform: translateY(-3px); }
 }
 
-/* Hover GdM: virata calda anche sulle onde animate */
+/* Hover GdM: le onde si saturano, non cambiano colore */
 @media (hover: hover) and (pointer: fine) {
   .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section) .gdm-wave-anim__layer {
-    filter: hue-rotate(-200deg) saturate(1.4) brightness(1.1);
+    filter: saturate(1.5) brightness(1.06);
   }
 }
 
@@ -3404,6 +3377,9 @@ main table.legacy-table tr:last-child th,
 /* =========================================
    MACRO HEIGHTS — alzati per non troncare titolo+sub
    ========================================= */
+.sidebar-macro[data-macro="esodo"] { --esodo-h-closed: 200px !important; }
+.sidebar-macro[data-macro="esodo"] { max-height: var(--esodo-h-closed) !important; }
+.macro-wave-wrap--esodo { bottom: 0; }
 .sidebar-macro[data-macro="gdm"]   { --gdm-h-closed:   200px !important; }
 .sidebar-macro[data-macro="carpe"] { --carpe-h-closed: 200px !important; }
 .sidebar-macro[data-macro="gdm"]   { max-height: var(--gdm-h-closed)   !important; }
@@ -3439,10 +3415,10 @@ main table.legacy-table tr:last-child th,
   margin: 0;
 }
 
-/* Hover GdM: vira al rosso/oro */
+/* Hover GdM e Ca.r.Pe.: solo saturazione, ciascuno sulla propria tinta */
 @media (hover: hover) and (pointer: fine) {
   .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section) .macro-wave-svg {
-    filter: hue-rotate(-180deg) saturate(1.4) brightness(1.05);
+    filter: saturate(1.5) brightness(1.04);
   }
   .sidebar-macro[data-macro="carpe"]:hover:not(.is-active-section) .macro-wave-svg {
     filter: saturate(1.4) brightness(1.1) drop-shadow(0 0 8px rgba(255,217,125,0.45));
@@ -3451,6 +3427,7 @@ main table.legacy-table tr:last-child th,
 
 /* Active section: opacità ridotta per non distrarre, animazione continua */
 .sidebar-macro[data-macro="gdm"].is-active-section .macro-wave-svg,
+.sidebar-macro[data-macro="esodo"].is-active-section .macro-wave-svg,
 .sidebar-macro[data-macro="carpe"].is-active-section .macro-wave-svg {
   opacity: 0.45;
 }
@@ -3657,35 +3634,6 @@ main table.legacy-table tr:last-child th,
 }
 
 /* =========================================
-   COLORE HOVER UNIFICATO su tutti i macro
-   Sostituisce i singoli filter:hue-rotate per usare lo stesso tono caldo
-   (terracotta var(--c-accent) #b8541e) su Home, Carpe, GdM.
-   ========================================= */
-@media (hover: hover) and (pointer: fine) {
-  /* Riassetto: tutti i .macro-wave-svg / .macro-clouds-svg in hover/active
-     prendono lo stesso filter hue-rotate verso il rosso caldo. */
-  .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section)   .macro-wave-svg,
-  .sidebar-macro[data-macro="carpe"]:hover:not(.is-active-section) .macro-wave-svg,
-  .sidebar-macro[data-macro="home"]:hover:not(.is-active-section)  .macro-clouds-svg {
-    filter: sepia(0.5) saturate(2.8) hue-rotate(-25deg) brightness(1.05) !important;
-  }
-  /* Stesso filtro al passaggio del bordo del container */
-  .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section),
-  .sidebar-macro[data-macro="carpe"]:hover:not(.is-active-section),
-  .sidebar-macro[data-macro="home"]:hover:not(.is-active-section) {
-    border-color: var(--c-accent, #b8541e) !important;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.5),
-                0 6px 18px rgba(184, 84, 30, 0.22) !important;
-  }
-}
-/* Active section (utente nel ramo): tono spento ma uniforme */
-.sidebar-macro[data-macro="gdm"].is-active-section   .macro-wave-svg,
-.sidebar-macro[data-macro="carpe"].is-active-section .macro-wave-svg,
-.sidebar-macro[data-macro="home"].is-active-section  .macro-clouds-svg {
-  opacity: 0.45;
-}
-
-/* =========================================
    FIX 2026-04-27 — Leggibilità link nei macro
    I .nav-link nei contenitori avevano opacity bassa o color sbiadito.
    Aumentiamo il contrasto a riposo e diamo un hover distinto.
@@ -3851,61 +3799,6 @@ a.sidebar-macro-header.sidebar-macro-header--link.is-active {
 }
 
 /* =========================================
-   FIX — Animazione barcollare/oscillare costante delle icone macro
-   Si ferma solo durante hover sul contenitore.
-   ========================================= */
-/* Barchetta GdM: dondolio leggero costante */
-.sidebar-macro[data-macro="gdm"] .sidebar-macro-header::before {
-  animation: gdm-boat-rock 3.6s ease-in-out infinite !important;
-}
-@keyframes gdm-boat-rock {
-  0%, 100% { transform: translateY(-50%) rotate(-4deg); }
-  25%      { transform: translateY(-54%) rotate(2deg);  }
-  50%      { transform: translateY(-50%) rotate(5deg);  }
-  75%      { transform: translateY(-46%) rotate(-2deg); }
-}
-.sidebar-macro[data-macro="gdm"]:hover .sidebar-macro-header::before {
-  animation-play-state: paused !important;
-}
-
-/* Clessidra Carpe: oscillazione leggera tra ribaltamenti */
-.sidebar-macro[data-macro="carpe"] .sidebar-macro-header::before {
-  animation: carpe-hourglass-rock 4s ease-in-out infinite !important;
-}
-@keyframes carpe-hourglass-rock {
-  0%, 100% { transform: translateY(-50%) rotate(-6deg); }
-  20%      { transform: translateY(-50%) rotate(4deg);  }
-  40%      { transform: translateY(-50%) rotate(-3deg); }
-  60%      { transform: translateY(-50%) rotate(6deg);  }
-  80%      { transform: translateY(-50%) rotate(-2deg); }
-}
-.sidebar-macro[data-macro="carpe"]:hover .sidebar-macro-header::before {
-  animation-play-state: paused !important;
-}
-
-/* Icona casetta Home: fluttua dolcemente su e giù */
-.sidebar-macro[data-macro="home"] .sidebar-macro-icon {
-  animation: home-house-float 5s ease-in-out infinite;
-  transform-origin: 50% 50%;
-}
-@keyframes home-house-float {
-  0%, 100% { transform: translateY(-50%); }
-  50%      { transform: translateY(-56%); }
-}
-.sidebar-macro[data-macro="home"]:hover .sidebar-macro-icon {
-  animation-play-state: paused;
-}
-
-/* Reduce-motion: ferma tutte le oscillazioni */
-@media (prefers-reduced-motion: reduce) {
-  .sidebar-macro[data-macro="gdm"] .sidebar-macro-header::before,
-  .sidebar-macro[data-macro="carpe"] .sidebar-macro-header::before,
-  .sidebar-macro[data-macro="home"] .sidebar-macro-icon {
-    animation: none !important;
-  }
-}
-
-/* =========================================
    FIX 2026-04-27 — Nuvole capovolte 180°
    La base piatta sta in alto (tagliata dal bordo del contenitore),
    i cumuli arrotondati pendono verso il basso.
@@ -4001,56 +3894,6 @@ a.sidebar-macro-header.sidebar-macro-header--link {
 }
 
 /* =========================================
-   FIX 2026-04-27 — Animazioni icone macro definitive
-   - Home: casa che SALTELLA (rimbalzo verticale ampio)
-   - Carpe: clessidra ROTATE -20°/+20° (oscillazione angolare regolare)
-   - GdM: barca che BARCOLLA solo in rotazione (left-right swing)
-   ========================================= */
-
-/* Casa saltella — rimbalzo verticale "elastico" */
-.sidebar-macro[data-macro="home"] .sidebar-macro-icon {
-  animation: home-house-bounce 1.4s cubic-bezier(0.5, 0.0, 0.4, 1) infinite !important;
-  transform-origin: 50% 100%;
-}
-@keyframes home-house-bounce {
-  0%, 100% { transform: translateY(-50%) translateY(0);    }
-  20%      { transform: translateY(-50%) translateY(-9px); }  /* salita rapida */
-  40%      { transform: translateY(-50%) translateY(0);    }  /* atterraggio */
-  50%      { transform: translateY(-50%) translateY(-3px); }  /* piccolo rimbalzo */
-  60%      { transform: translateY(-50%) translateY(0);    }
-  /* riposo finale fino a 100% */
-}
-.sidebar-macro[data-macro="home"]:hover .sidebar-macro-icon {
-  animation-play-state: paused !important;
-}
-
-/* Clessidra: rotazione angolare ±20° regolare (pendolo) */
-.sidebar-macro[data-macro="carpe"] .sidebar-macro-header::before {
-  animation: carpe-hourglass-pendulum 3s ease-in-out infinite !important;
-  transform-origin: 50% 50%;
-}
-@keyframes carpe-hourglass-pendulum {
-  0%, 100% { transform: translateY(-50%) rotate(-20deg); }
-  50%      { transform: translateY(-50%) rotate(20deg);  }
-}
-.sidebar-macro[data-macro="carpe"]:hover .sidebar-macro-header::before {
-  animation-play-state: paused !important;
-}
-
-/* Barchetta: barcolla solo in rotazione (no Y oscillazione) */
-.sidebar-macro[data-macro="gdm"] .sidebar-macro-header::before {
-  animation: gdm-boat-sway 2.6s ease-in-out infinite !important;
-  transform-origin: 50% 50%;
-}
-@keyframes gdm-boat-sway {
-  0%, 100% { transform: translateY(-50%) rotate(-12deg); }
-  50%      { transform: translateY(-50%) rotate(12deg);  }
-}
-.sidebar-macro[data-macro="gdm"]:hover .sidebar-macro-header::before {
-  animation-play-state: paused !important;
-}
-
-/* =========================================
    FIX 2026-04-27 — GdM: nuova icona NAVE GRANDE (cargo/transatlantico)
    Scafo lungo + ponti sopra + 2 ciminiere + oblò + linee onde sotto.
    Animazione: oscillazione laterale (translateX) senza inclinazione.
@@ -4063,18 +3906,6 @@ a.sidebar-macro-header.sidebar-macro-header--link {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><g fill='none' stroke-linecap='round' stroke-linejoin='round'><path d='M3 32 L45 32 L41 41 L7 41 Z' fill='%23e89868' stroke='%237eaadc' stroke-width='1.6'/><path d='M11 32 L11 24 L37 24 L37 32 Z' fill='%23ede4d0' stroke='%237eaadc' stroke-width='1.4'/><path d='M16 24 L16 17 L32 17 L32 24 Z' fill='%23f5efe4' stroke='%237eaadc' stroke-width='1.3'/><rect x='20.5' y='10' width='3.5' height='8' fill='%237eaadc'/><rect x='25.5' y='12' width='3' height='6' fill='%237eaadc'/><circle cx='14.5' cy='28' r='1.3' fill='%23ffd97d' stroke='%237eaadc' stroke-width='0.9'/><circle cx='20' cy='28' r='1.3' fill='%23ffd97d' stroke='%237eaadc' stroke-width='0.9'/><circle cx='25.5' cy='28' r='1.3' fill='%23ffd97d' stroke='%237eaadc' stroke-width='0.9'/><circle cx='31' cy='28' r='1.3' fill='%23ffd97d' stroke='%237eaadc' stroke-width='0.9'/><line x1='22' y1='10' x2='22' y2='6' stroke='%23e89868' stroke-width='1.2'/><path d='M22 6 L27 8 L22 9 Z' fill='%23e89868' stroke='none'/><path d='M2 44 C7 42 11 46 16 44 C21 42 25 46 30 44 C35 42 40 46 45 44' stroke='%237eaadc' stroke-width='1.5' opacity='0.5'/><path d='M0 47 C5 45 10 48 15 46 C20 44 26 47 31 46 C36 44 42 47 48 46' stroke='%237eaadc' stroke-width='1.3' opacity='0.32'/></g></svg>") !important;
 }
 
-/* Animazione: oscillazione laterale orizzontale (translateX), niente rotazione */
-.sidebar-macro[data-macro="gdm"] .sidebar-macro-header::before {
-  animation: gdm-ship-drift 3.4s ease-in-out infinite !important;
-  transform-origin: 50% 50%;
-}
-@keyframes gdm-ship-drift {
-  0%, 100% { transform: translateY(-50%) translateX(-5px); }
-  50%      { transform: translateY(-50%) translateX(5px);  }
-}
-.sidebar-macro[data-macro="gdm"]:hover .sidebar-macro-header::before {
-  animation-play-state: paused !important;
-}
 
 /* =========================================
    TOAST notifications — fissati top, countdown 10s, X chiudi
@@ -4542,5 +4373,304 @@ a.sidebar-macro-header.sidebar-macro-header--link {
   }
   .sidebar-macro[data-macro="carpe"]:hover:not(.is-active-section) > .sidebar-macro-header::after {
     border-color: #b8541e;
+  }
+}
+
+/* ============================================================================
+   SISTEMA DI MOVIMENTO E COLORE DELLE CARD
+   ----------------------------------------------------------------------------
+   Sostituisce tre blocchi stratificati che si contraddicevano a vicenda:
+   "COLORE HOVER UNIFICATO su tutti i macro", "FIX - Animazione barcollare
+   delle icone macro" e "FIX - Animazioni icone macro definitive".
+
+   Tre regole, valide per tutte e quattro le card:
+   1. una card ha una sola tinta. L'hover la SATURA, non la sposta: niente
+      hue-rotate, che faceva diventare rossa anche la card blu;
+   2. stessa grammatica di movimento ovunque: respiro lento da fermi, hover
+      che accelera e solleva, ramo attivo che si calma;
+   3. una sola scala di durate e di curve, dichiarata una volta sola.
+   ========================================================================= */
+
+:root {
+  /* durate */
+  --mo-quick: 170ms;
+  --mo-base:  280ms;
+  --mo-slow:  440ms;
+  /* curve: standard e "emphasized decelerate" dei sistemi di motion design */
+  --mo-standard: cubic-bezier(.40, 0, .20, 1);
+  --mo-enter:    cubic-bezier(.05, .70, .10, 1);
+  --mo-spring:   cubic-bezier(.34, 1.35, .64, 1);
+  --mo-sine:     cubic-bezier(.45, 0, .55, 1);
+}
+
+/* ---- Identità cromatica di ogni card ------------------------------------
+   Tinta (H) fissa, saturazione e luminosità sono le uniche cose che si
+   muovono. Home e GdM condividono la famiglia del blu: restano distinte
+   perché il mare è più profondo e più saturo del cielo.                     */
+.sidebar-macro[data-macro="home"]  { --mc-h: 210; --mc-s: 26%; --mc-l: 48%; --mc-idle: 5.2s; }
+.sidebar-macro[data-macro="esodo"] { --mc-h:  43; --mc-s: 58%; --mc-l: 45%; --mc-idle: 4.6s; }
+.sidebar-macro[data-macro="carpe"] { --mc-h:  21; --mc-s: 63%; --mc-l: 42%; --mc-idle: 5.8s; }
+.sidebar-macro[data-macro="gdm"]   { --mc-h: 198; --mc-s: 58%; --mc-l: 33%; --mc-idle: 6.4s; }
+
+[data-theme="dark"] .sidebar-macro[data-macro="home"]  { --mc-s: 52%; --mc-l: 68%; }
+[data-theme="dark"] .sidebar-macro[data-macro="esodo"] { --mc-s: 76%; --mc-l: 69%; }
+[data-theme="dark"] .sidebar-macro[data-macro="carpe"] { --mc-s: 72%; --mc-l: 66%; }
+[data-theme="dark"] .sidebar-macro[data-macro="gdm"]   { --mc-s: 60%; --mc-l: 63%; }
+
+.sidebar-macro[data-macro] {
+  --mc-edge:     hsl(var(--mc-h) var(--mc-s) var(--mc-l));
+  --mc-edge-hot: hsl(var(--mc-h) calc(var(--mc-s) + 20%) calc(var(--mc-l) + 7%));
+  --mc-glow:     hsl(var(--mc-h) calc(var(--mc-s) + 24%) calc(var(--mc-l) + 4%) / .32);
+  --mc-sheen:    hsl(var(--mc-h) calc(var(--mc-s) + 30%) 72% / .16);
+  transition:
+    max-height   var(--mo-slow)  var(--mo-enter),
+    border-color var(--mo-base)  var(--mo-standard),
+    background   var(--mo-base)  var(--mo-standard),
+    box-shadow   var(--mo-base)  var(--mo-standard),
+    transform    var(--mo-base)  var(--mo-spring);
+}
+
+/* ---- Colore a riposo: lo detta il token, non più quattro regole sparse.
+   Prima Home e GdM finivano sullo stesso identico #7eaadc ed erano
+   indistinguibili: ora il mare è più freddo e più saturo del cielo.      */
+.sidebar-macro[data-macro="home"]:not(.is-active-section):not(.is-tap-open),
+.sidebar-macro[data-macro="esodo"]:not(.is-active-section):not(.is-tap-open),
+.sidebar-macro[data-macro="carpe"]:not(.is-active-section):not(.is-tap-open),
+.sidebar-macro[data-macro="gdm"]:not(.is-active-section):not(.is-tap-open) {
+  border-color: var(--mc-edge);
+}
+
+/* ---- Hover: stessa tinta, più satura, con sollevamento ------------------ */
+@media (hover: hover) and (pointer: fine) {
+  .sidebar-macro[data-macro="home"]:hover:not(.is-active-section),
+  .sidebar-macro[data-macro="esodo"]:hover:not(.is-active-section),
+  .sidebar-macro[data-macro="carpe"]:hover:not(.is-active-section),
+  .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section) {
+    border-color: var(--mc-edge-hot) !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.45),
+                0 10px 26px -8px var(--mc-glow) !important;
+    transform: translateY(-2px);
+  }
+
+  /* Sfondi animati (onde, nuvole, sabbia, scintille): solo saturazione.
+     Qui stava il difetto principale: un hue-rotate uguale per tutti.        */
+  .sidebar-macro[data-macro="home"]:hover:not(.is-active-section)  .macro-clouds-svg,
+  .sidebar-macro[data-macro="home"]:hover:not(.is-active-section)  .macro-wave-svg,
+  .sidebar-macro[data-macro="esodo"]:hover:not(.is-active-section) .macro-wave-svg,
+  .sidebar-macro[data-macro="carpe"]:hover:not(.is-active-section) .macro-wave-svg,
+  .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section)   .macro-wave-svg,
+  .sidebar-macro[data-macro="home"]:hover:not(.is-active-section)::before,
+  .sidebar-macro[data-macro="esodo"]:hover:not(.is-active-section)::before,
+  .sidebar-macro[data-macro="carpe"]:hover:not(.is-active-section)::before,
+  .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section)::before,
+  .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section) .gdm-wave-anim__layer,
+  .sidebar-macro[data-macro="home"]:hover:not(.is-active-section)  .sidebar-macro-icon,
+  .sidebar-macro[data-macro="esodo"]:hover:not(.is-active-section) .sidebar-macro-header::before,
+  .sidebar-macro[data-macro="carpe"]:hover:not(.is-active-section) .sidebar-macro-header::before,
+  .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section)   .sidebar-macro-header::before {
+    filter: saturate(1.5) brightness(1.04) !important;
+  }
+
+  /* Titolo e sottotitolo seguono la tinta della card, non un rosso comune */
+  .sidebar-macro[data-macro="home"]:hover:not(.is-active-section)  .sidebar-macro-title,
+  .sidebar-macro[data-macro="esodo"]:hover:not(.is-active-section) .sidebar-macro-title,
+  .sidebar-macro[data-macro="carpe"]:hover:not(.is-active-section) .sidebar-macro-title,
+  .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section)   .sidebar-macro-title {
+    color: var(--mc-edge-hot) !important;
+  }
+}
+
+/* ---- Riflesso che attraversa la card una volta sola --------------------- */
+.sidebar-macro[data-macro]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(105deg,
+    transparent 36%, var(--mc-sheen) 48%, transparent 60%);
+}
+@media (hover: hover) and (pointer: fine) {
+  .sidebar-macro[data-macro="home"]:hover:not(.is-active-section)::after,
+  .sidebar-macro[data-macro="esodo"]:hover:not(.is-active-section)::after,
+  .sidebar-macro[data-macro="carpe"]:hover:not(.is-active-section)::after,
+  .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section)::after {
+    opacity: 1;
+    animation: mc-sheen-sweep 820ms var(--mo-standard) 1 both;
+  }
+}
+@keyframes mc-sheen-sweep {
+  from { transform: translateX(-130%); }
+  to   { transform: translateX(130%);  }
+}
+
+/* ---- Il respiro delle icone --------------------------------------------
+   Home disegna l'icona dentro .sidebar-macro-icon, le altre tre con
+   .sidebar-macro-header::before. Entrambe sono assolute e centrate con
+   translateY(-50%): ogni keyframe deve ripartire da lì.                     */
+.sidebar-macro[data-macro="home"]  .sidebar-macro-icon {
+  animation: mc-home-bob var(--mc-idle) var(--mo-sine) infinite !important;
+  transform-origin: 50% 100%;
+}
+.sidebar-macro[data-macro="esodo"] .sidebar-macro-header::before {
+  animation: mc-esodo-charge var(--mc-idle) var(--mo-standard) infinite !important;
+  transform-origin: 50% 50%;
+}
+.sidebar-macro[data-macro="carpe"] .sidebar-macro-header::before {
+  animation: mc-carpe-pendulum var(--mc-idle) var(--mo-sine) infinite !important;
+  transform-origin: 50% 18%;
+}
+.sidebar-macro[data-macro="gdm"]   .sidebar-macro-header::before {
+  animation: mc-gdm-sail var(--mc-idle) var(--mo-sine) infinite !important;
+  transform-origin: 50% 70%;
+}
+
+@keyframes mc-home-bob {
+  0%, 100% { transform: translateY(-50%) translateY(0)    scale(1);    }
+  50%      { transform: translateY(-50%) translateY(-4px) scale(1.035); }
+}
+@keyframes mc-carpe-pendulum {
+  0%, 100% { transform: translateY(-50%) rotate(-13deg); }
+  50%      { transform: translateY(-50%) rotate(13deg);  }
+}
+@keyframes mc-gdm-sail {
+  0%, 100% { transform: translateY(-50%) translateX(-4px) rotate(-2.5deg); }
+  50%      { transform: translateY(-50%) translateX(4px)  rotate(2.5deg);  }
+}
+/* Il fulmine resta fermo e scarica due volte a fine ciclo: il movimento
+   costante lo renderebbe una bandierina, non un lampo.                      */
+@keyframes mc-esodo-charge {
+  0%, 72%, 100% { transform: translateY(-50%) rotate(0deg);    filter: none; }
+  77%  { transform: translateY(-50%) rotate(-3deg);
+         filter: drop-shadow(0 0 6px hsl(var(--mc-h) 88% 64% / .95)) brightness(1.14); }
+  82%  { transform: translateY(-50%) rotate(1.5deg);  filter: none; }
+  88%  { transform: translateY(-50%) rotate(-1.5deg);
+         filter: drop-shadow(0 0 4px hsl(var(--mc-h) 88% 64% / .75)) brightness(1.08); }
+  93%  { transform: translateY(-50%) rotate(0deg);    filter: none; }
+}
+
+/* ---- Hover: l'icona accelera, non si ferma -----------------------------
+   Prima tre card su quattro mettevano l'animazione in pausa al passaggio
+   del mouse e la quarta no: era quello il "alcune animate e altre no".      */
+@media (hover: hover) and (pointer: fine) {
+  .sidebar-macro[data-macro="home"]:hover:not(.is-active-section)  .sidebar-macro-icon,
+  .sidebar-macro[data-macro="esodo"]:hover:not(.is-active-section) .sidebar-macro-header::before,
+  .sidebar-macro[data-macro="carpe"]:hover:not(.is-active-section) .sidebar-macro-header::before,
+  .sidebar-macro[data-macro="gdm"]:hover:not(.is-active-section)   .sidebar-macro-header::before {
+    animation-duration: calc(var(--mc-idle) * 0.42) !important;
+    animation-play-state: running !important;
+  }
+}
+
+/* ---- Ramo attivo: il movimento si calma, non sparisce ------------------ */
+.sidebar-macro[data-macro="home"].is-active-section  .sidebar-macro-icon,
+.sidebar-macro[data-macro="esodo"].is-active-section .sidebar-macro-header::before,
+.sidebar-macro[data-macro="carpe"].is-active-section .sidebar-macro-header::before,
+.sidebar-macro[data-macro="gdm"].is-active-section   .sidebar-macro-header::before {
+  animation-duration: calc(var(--mc-idle) * 2.2) !important;
+  animation-play-state: running !important;
+  opacity: .78;
+}
+
+/* ---- Apertura a cascata delle sotto-sezioni ---------------------------- */
+.sidebar-macro[data-macro] > .sidebar-section {
+  transition:
+    opacity    var(--mo-base) var(--mo-standard),
+    transform  var(--mo-base) var(--mo-enter),
+    visibility var(--mo-base) var(--mo-standard);
+}
+.sidebar-macro[data-macro] > .sidebar-section:nth-of-type(1) { transition-delay:  40ms; }
+.sidebar-macro[data-macro] > .sidebar-section:nth-of-type(2) { transition-delay:  95ms; }
+.sidebar-macro[data-macro] > .sidebar-section:nth-of-type(3) { transition-delay: 150ms; }
+.sidebar-macro[data-macro] > .sidebar-section:nth-of-type(4) { transition-delay: 205ms; }
+/* In chiusura la cascata va tolta, altrimenti la card sembra incepparsi */
+.sidebar-macro[data-macro]:not(:hover):not(.is-active-section):not(.is-tap-open) > .sidebar-section {
+  transition-delay: 0ms;
+}
+
+/* ---- Voci di menu: stesso scatto breve su tutte le card ---------------- */
+.sidebar-macro[data-macro] .nav-link {
+  transition:
+    color            var(--mo-quick) var(--mo-standard),
+    background-color var(--mo-quick) var(--mo-standard),
+    padding-left     var(--mo-quick) var(--mo-spring);
+}
+@media (hover: hover) and (pointer: fine) {
+  .sidebar-macro[data-macro] .nav-link:hover {
+    padding-left: 22px;
+  }
+}
+
+/* ---- Chevron: stessa curva e stesso verso ovunque ---------------------- */
+.sidebar-macro[data-macro] > .sidebar-macro-header::after {
+  transition: transform var(--mo-base) var(--mo-spring),
+              border-color var(--mo-base) var(--mo-standard);
+}
+
+/* ---- Chi ha chiesto meno movimento non ne riceve ----------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-macro[data-macro] .sidebar-macro-icon,
+  .sidebar-macro[data-macro] .sidebar-macro-header::before,
+  .sidebar-macro[data-macro] .macro-wave-svg,
+  .sidebar-macro[data-macro] .macro-clouds-svg,
+  .sidebar-macro[data-macro]::before,
+  .sidebar-macro[data-macro]::after {
+    animation: none !important;
+  }
+  .sidebar-macro[data-macro],
+  .sidebar-macro[data-macro] > .sidebar-section,
+  .sidebar-macro[data-macro] .nav-link {
+    transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
+  }
+  .sidebar-macro[data-macro]:hover:not(.is-active-section) {
+    transform: none;
+  }
+}
+
+/* ---- Card dei contenuti: stessa grammatica delle card di sezione --------
+   Prima avevano solo un sollevamento di 2px con la curva generica e l'icona
+   immobile: erano le "card non animate" rispetto a quelle della barra.      */
+.card,
+.scenario-card,
+.mht-mode-card,
+.credits-card {
+  transition:
+    transform    var(--mo-base) var(--mo-spring),
+    border-color var(--mo-base) var(--mo-standard),
+    box-shadow   var(--mo-base) var(--mo-standard);
+}
+.card-icon {
+  transition:
+    transform        var(--mo-base) var(--mo-spring),
+    background-color var(--mo-base) var(--mo-standard),
+    box-shadow       var(--mo-base) var(--mo-standard);
+}
+@media (hover: hover) and (pointer: fine) {
+  .card:hover,
+  .scenario-card:hover,
+  .mht-mode-card:hover,
+  .credits-card:hover {
+    transform: translateY(-3px);
+  }
+  /* L'icona anticipa il movimento della card: e' il dettaglio che fa
+     sembrare viva una superficie altrimenti piatta. */
+  .card:hover .card-icon {
+    transform: translateY(-2px) scale(1.08) rotate(-5deg);
+  }
+  .card--accent:hover .card-icon {
+    transform: translateY(-2px) scale(1.08) rotate(5deg);
+    box-shadow: 0 6px 16px -6px var(--c-accent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, .scenario-card, .mht-mode-card, .credits-card, .card-icon {
+    transition-duration: 1ms !important;
+  }
+  .card:hover, .scenario-card:hover, .mht-mode-card:hover,
+  .credits-card:hover, .card:hover .card-icon, .card--accent:hover .card-icon {
+    transform: none !important;
   }
 }
