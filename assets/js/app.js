@@ -188,7 +188,7 @@
     }
 
     // Mobile/touch: tap sull'header del macro apre/chiude (no hover)
-    document.querySelectorAll('.sidebar-macro[data-macro="gdm"], .sidebar-macro[data-macro="carpe"], .sidebar-macro[data-macro="home"]').forEach(function (macro) {
+    document.querySelectorAll('.sidebar-macro[data-macro="gdm"], .sidebar-macro[data-macro="carpe"], .sidebar-macro[data-macro="home"], .sidebar-macro[data-macro="esodo"]').forEach(function (macro) {
       const header = macro.querySelector('.sidebar-macro-header');
       if (!header) return;
       header.addEventListener('click', function () {

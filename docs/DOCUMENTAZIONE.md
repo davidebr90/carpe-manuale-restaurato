@@ -81,6 +81,25 @@ Sentenze sul calcolo pensioni · Indice circolari (originale).
 **Raccolta Circolari** — le circolari INPS storiche sulla previdenza marinara,
 consultabili e ricercabili.
 
+### Esodo & Fondo Elettrici
+
+Studio originale dell'autore sul passaggio dalle regole del Fondo Elettrici a quelle
+del FPLD, in nove pagine da leggere in ordine:
+
+- **Panoramica**: i tre numeri che decidono tutto (R12, soglia, sforamento) e la mappa della sezione.
+- **Le parole, prima dei numeri**: glossario, retributivo e contributivo, le tre riforme.
+- **Il Fondo Elettrici dopo il 2000**: evidenza contabile separata, codice FSEL nell'estratto conto, i due calcoli a confronto, perché dal 2010 si paga.
+- **L'onere di trasferimento**: riserva matematica, rivalutazione al 4,5 per cento, la formula riga per riga.
+- **Quale stipendio conta e dove sta la soglia**: i tre imponibili, la finestra dei dodici mesi, le leve sull'ultima busta.
+- **La scala oltre la soglia**: il moltiplicatore, la scala in numeri, come calibrarla con due simulazioni Ca.R.Pe.
+- **L'isopensione in quattro mosse**: AP157, termini, calendario e rateazione dell'onere.
+- **FOPEN e il TFR**: la scelta 60/40, le cinque strade durante l'esodo, la tassazione agevolata.
+- **Conviene?**: scenari a confronto, punto di pareggio, sette domande a quattro sportelli e fonti.
+
+Le pagine usano grafici SVG inline (che seguono il tema chiaro e scuro) e tabelle di
+tassazione. Il caso di esempio è volutamente esemplificativo e gli importi sono
+arrotondati: i numeri veri vanno presi dalla simulazione Ca.R.Pe. sul caso concreto.
+
 **Manuali PDF GdM** — manuali tecnici visualizzabili inline:
 Carpe GdM 60500 · Ricognizione · Guida operativa · Raccolta norme ·
 Analisi tecniche · Legge 413/1984.

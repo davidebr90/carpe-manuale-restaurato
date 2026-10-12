@@ -9,6 +9,13 @@ di ricerca offline, tema chiaro/scuro, lightbox, viewer PDF, strumento di
 conversione E1/EC in-browser, impaginazione e riorganizzazione editoriale) è
 rilasciato sotto **licenza MIT** (vedi [LICENSE](LICENSE)).
 
+Allo stesso modo è **opera originale dell'autore**, e ricade sotto la stessa licenza,
+la sezione **"Esodo & Fondo Elettrici"** (`pages/esodo/`): testi, esempi numerici,
+tabelle di tassazione e grafici sono uno studio scritto da Davide Pica a partire dalle
+fonti normative citate in ciascuna pagina. Le norme, le circolari INPS e la
+giurisprudenza richiamate restano ovviamente dei rispettivi titolari e sono citate per
+riferimento.
+
 ## 2. Contenuti INPS e di terzi — © rispettivi titolari (NON licenziati dall'autore)
 
 I contenuti documentali riprodotti in questo progetto sono opera di **INPS

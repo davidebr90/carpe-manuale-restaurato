@@ -27,6 +27,9 @@ navigazione collassabile, lightbox immagini e viewer PDF integrato — che copre
 - **Documentazione**: qualifiche marittimi, codifiche, sentenze, raccolta
   circolari INPS storiche.
 - **Manuali PDF** e archivi HTML dei manuali "Utilizzo" e "Installazione".
+- **Esodo & Fondo Elettrici**: il trasferimento oneroso dalle regole del Fondo a
+  quelle del FPLD, la soglia dei dodici mesi, l'isopensione e il fondo complementare,
+  con esempi, tabelle di tassazione e grafici.
 - **Guide pratiche** sul file `.E1`/`.EC` e uno **strumento in-browser** per
   convertire il proprio estratto tra formato E1/EC e XML leggibile (i dati **non
   lasciano mai il dispositivo**).
@@ -45,6 +48,7 @@ navigazione collassabile, lightbox immagini e viewer PDF integrato — che copre
 | `assets/css`, `assets/js` | Stile e script originali (ricerca, lightbox, viewer PDF, codec E1) |
 | `assets/images`, `assets/vendor/pdfjs` | Immagini e libreria PDF.js (offline) |
 | `pages/norme`, `pages/procedura`, `pages/documentazione`, `pages/circolari` | Sezioni del manuale |
+| `pages/esodo` | Sezione "Esodo & Fondo Elettrici" (studio originale dell'autore) |
 | `pdf/` | Manuali PDF (contenuti INPS, vedi NOTICE) |
 | `mht/` | Risorse estratte dai manuali HTML |
 
