@@ -4949,16 +4949,76 @@ main .mht-content .manual-block.block-list {
    una riga sola e la cella si prende la larghezza che le serve. */
 main .content td > .manual-heading.block-list,
 main .mht-content td > .manual-heading.block-list {
-  white-space: pre-line;
+  /* pre, non pre-line: ogni riga del sorgente resta su una riga sola e
+     non si spezza a meta' parola in una colonna stretta. */
+  white-space: pre;
   hyphens: none;
   overflow-wrap: normal;
-  word-break: keep-all;
-  min-width: 8.5em;
 }
-/* Le celle di un elenco di valori restano in alto e non si allargano
-   oltre il necessario. */
-main .content table.legacy-grid td:has(> .manual-heading) {
+/* La cella dell'intestazione si prende quanto le serve e non di piu'. */
+main .content table td:has(> .manual-heading),
+main .mht-content table td:has(> .manual-heading) {
   width: 1%;
-  white-space: normal;
+  white-space: nowrap;
   vertical-align: top;
+}
+
+/* ---- GRIGLIA RICOSTRUITA DA UNA CELLA APPIATTITA -----------------------
+   Quando i record del sorgente sono regolari, le righe vuote che li
+   separavano diventano righe vere di tabella.                             */
+main .content table.block-grid,
+main .mht-content table.block-grid {
+  width: 100%;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  margin: 2px 0 6px;
+  table-layout: auto !important;
+}
+main .content table.block-grid th,
+main .content table.block-grid td {
+  padding: 7px 11px !important;
+  vertical-align: top !important;
+  text-align: left !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--c-border) !important;
+  border-right: 1px solid var(--c-border) !important;
+}
+main .content table.block-grid th:last-child,
+main .content table.block-grid td:last-child { border-right: 0 !important; }
+main .content table.block-grid tr:last-child td { border-bottom: 0 !important; }
+main .content table.block-grid tr.riga-intestazione th {
+  font-weight: 700;
+  color: var(--c-fg);
+  background: var(--c-bg-2);
+  border-bottom: 2px solid var(--c-border-2) !important;
+  white-space: nowrap;
+}
+/* Apertura di un gruppo: attraversa tutta la larghezza e si stacca. */
+main .content table.block-grid tr.riga-gruppo td {
+  background: var(--c-bg-2);
+  font-weight: 600;
+  color: var(--c-fg);
+  border-top: 2px solid var(--c-border-2) !important;
+  border-right: 0 !important;
+}
+/* Le colonne di codici restano strette e non vanno a capo. */
+main .content table.block-grid td:first-child,
+main .content table.block-grid th:first-child { width: 1%; white-space: nowrap; }
+
+/* ---- RECORD SEPARATI, DOVE LE COLONNE NON SONO RICOSTRUIBILI ----------
+   Quando i record del sorgente non hanno lunghezza regolare non si puo'
+   dedurre a quale colonna appartenga ogni valore, ma si puo' almeno
+   smettere di farli scorrere uno dentro l'altro.                          */
+main .content .manual-block.block-records .record,
+main .mht-content .manual-block.block-records .record {
+  padding: 7px 0;
+  border-bottom: 1px solid var(--c-border);
+  line-height: 1.5;
+}
+main .content .manual-block.block-records .record:last-child {
+  border-bottom: 0;
+}
+/* La prima riga del record e' il codice: va messa in evidenza. */
+main .content .manual-block.block-records .record {
+  position: relative;
 }

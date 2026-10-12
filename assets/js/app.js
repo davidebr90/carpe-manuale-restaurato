@@ -847,14 +847,93 @@
       'main .mht-content td > .manual-block'
     );
     blocchi.forEach(function (b) {
-      if (b.classList.contains('block-list')) return;
-      const righe = (b.textContent || '').split(/\r?\n/)
-        .map(function (r) { return r.trim(); })
-        .filter(function (r) { return r.length > 0; });
-      if (righe.length < 2) return;
-      const media = righe.reduce(function (n, r) { return n + r.length; }, 0) / righe.length;
-      // Righe molte e brevi: e' un elenco di valori, non un paragrafo.
-      if (righe.length >= 2 && media < 34) b.classList.add('block-list');
+      if (b.classList.contains('block-list') || b.dataset.griglia) return;
+
+      // Un'intestazione di colonna e' corta e i suoi a capo sono voluti:
+      // basta conservarli, non c'e' nessuna griglia da ricostruire.
+      if (b.classList.contains('manual-heading')) {
+        if (/\r?\n\s*\S/.test(b.textContent || '')) b.classList.add('block-list');
+        return;
+      }
+
+      // Nel sorgente originale una riga vuota separa un record dal
+      // successivo: e' quella la divisione fra le righe della tabella.
+      const gruppi = [];
+      let corrente = [];
+      (b.textContent || '').split(/\r?\n/).forEach(function (r) {
+        const v = r.replace(/ /g, ' ').trim();
+        if (!v) {
+          if (corrente.length) { gruppi.push(corrente); corrente = []; }
+        } else {
+          corrente.push(v);
+        }
+      });
+      if (corrente.length) gruppi.push(corrente);
+      if (gruppi.length < 3) return;
+
+      const tutte = gruppi.reduce(function (a, g) { return a.concat(g); }, []);
+      const media = tutte.reduce(function (n, r) { return n + r.length; }, 0) / tutte.length;
+      if (media >= 34) return;          // e' prosa, non un elenco di valori
+
+      // Quante righe ha di norma un record
+      const conteggio = {};
+      gruppi.forEach(function (g) { conteggio[g.length] = (conteggio[g.length] || 0) + 1; });
+      let moda = 0, quante = 0;
+      Object.keys(conteggio).forEach(function (k) {
+        if (conteggio[k] > quante) { quante = conteggio[k]; moda = parseInt(k, 10); }
+      });
+
+      // Ricostruiamo una tabella vera solo quando i record sono davvero
+      // regolari. Dove non lo sono, non inventiamo colonne: separiamo pero'
+      // i record fra loro, perche' altrimenti scorrono uno dentro l'altro.
+      if (moda < 2 || quante / gruppi.length < 0.6) {
+        b.dataset.griglia = '1';
+        b.classList.add('block-records');
+        b.textContent = '';
+        gruppi.forEach(function (g) {
+          const div = document.createElement('div');
+          div.className = 'record';
+          g.forEach(function (v, i) {
+            if (i) div.appendChild(document.createElement('br'));
+            div.appendChild(document.createTextNode(v));
+          });
+          b.appendChild(div);
+        });
+        return;
+      }
+
+      const tab = document.createElement('table');
+      tab.className = 'manual-table block-grid';
+      const corpo = document.createElement('tbody');
+      let intestazioneFatta = false;
+
+      gruppi.forEach(function (g, i) {
+        const tr = document.createElement('tr');
+        if (g.length === moda) {
+          // La prima riga regolare fa da intestazione delle colonne.
+          const cella = (i === 0 && !intestazioneFatta) ? 'th' : 'td';
+          if (cella === 'th') { tr.className = 'riga-intestazione'; intestazioneFatta = true; }
+          g.forEach(function (v) {
+            const c = document.createElement(cella);
+            c.textContent = v;
+            tr.appendChild(c);
+          });
+        } else {
+          // Record di lunghezza diversa: e' l'apertura di un gruppo, non una
+          // riga di dati. Non ne indoviniamo le colonne, la teniamo intera.
+          tr.className = 'riga-gruppo';
+          const c = document.createElement('td');
+          c.colSpan = moda;
+          c.textContent = g.join('  ·  ');
+          tr.appendChild(c);
+        }
+        corpo.appendChild(tr);
+      });
+
+      tab.appendChild(corpo);
+      b.dataset.griglia = '1';
+      b.textContent = '';
+      b.appendChild(tab);
     });
   }
 
